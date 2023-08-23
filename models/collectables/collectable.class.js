@@ -4,6 +4,9 @@ class Collectable {
     height = 150;
     width = 150;
     img;
+    minDistance;
+    validPosition = false;
+    currentImage = 0;
 
     imageCache = {};
 
@@ -19,5 +22,12 @@ class Collectable {
             img.src = path;
             this.imageCache[path] = img;
         });
+    }
+
+    playAnimation(images) {
+        let i = this.currentImage % images.length;
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
     }
 }
