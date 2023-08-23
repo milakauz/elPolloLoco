@@ -44,11 +44,11 @@ const level1 = new Level (
         new Coin('img/8_coin/coin_1.png'),
     ], 
     [
-        new Bottles('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
-        new Bottles('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
-        new Bottles('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
-        new Bottles('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
-        new Bottles('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
-        new Bottles('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
+        new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
+        new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
+        new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
+        new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
+        new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
+        new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'), 
     ]
 );
