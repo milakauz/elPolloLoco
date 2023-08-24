@@ -47,7 +47,6 @@ class World {
     }
 
     addToMap(mo) {
-        console.log(mo);
         mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
 
@@ -60,6 +59,7 @@ class World {
     }
 
     flipImage(mo) {
+        console.log('flipImage() wird aufgerufen!', mo.x);
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
         this.ctx.scale(-1, 1);
