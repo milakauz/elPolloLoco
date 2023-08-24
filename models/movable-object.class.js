@@ -1,33 +1,10 @@
-class MovableObject {
-    x = 100;
-    y = 300;
-    height = 150;
-    width = 100;
-    imageCache = {};
-    currentImage = 0;
+class MovableObject extends drawableObject {
     speed = 0.15;
     speedY = 0;
     acceleration = 2.5;
     otherDirection = false;
     energy = 100;
     lastHit = 0;
-
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        });
-    }
-
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
 
     drawFrame(ctx) {
         if (this instanceof Character || this instanceof Chicken) {
@@ -80,7 +57,7 @@ class MovableObject {
     }
 
     hit() {
-        this.energy -= 10;
+        this.energy -= 5;
         this.isHurt();
         if (this.energy < 0) {
             this.energy = 0;
