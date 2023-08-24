@@ -11,11 +11,22 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+        this.checkCollisions();
     }
 
     setWorld() {
         // übergibt aktuellen Zustand der Welt
         this.character.world = this;
+    }
+
+    checkCollisions() {
+        setInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+                if (this.character.isColliding(enemy)) {
+                    this.character.hit();
+                }
+            });
+        }, 200);
     }
 
     draw() {
@@ -47,19 +58,17 @@ class World {
     }
 
     addToMap(mo) {
-        mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
-
         if (mo.otherDirection) {
             this.flipImage(mo);
         }
+        mo.draw(this.ctx);
+        mo.drawFrame(this.ctx);
         if (mo.otherDirection) {
             this.flipImageBack(mo);
         }
     }
 
     flipImage(mo) {
-        console.log('flipImage() wird aufgerufen!', mo.x);
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
         this.ctx.scale(-1, 1);
