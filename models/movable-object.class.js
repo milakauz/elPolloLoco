@@ -9,6 +9,8 @@ class MovableObject {
     speedY = 0;
     acceleration = 2.5;
     otherDirection = false;
+    energy = 100;
+    lastHit = 0;
 
     loadImage(path) {
         this.img = new Image();
@@ -35,7 +37,6 @@ class MovableObject {
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.stroke();
         }
-       
     }
 
     moveRight() {
@@ -70,4 +71,32 @@ class MovableObject {
     isAboveGround() {
         return this.y < 157.5;
     }
+
+    isColliding(mo) {
+        return this.x + this.width > mo.x &&
+            this.y + this.height > mo.y &&
+            this.x < mo.x &&
+            this.y < mo.y + mo.height
+    }
+
+    hit() {
+        this.energy -= 10;
+        this.isHurt();
+        if (this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+    isHurt() {
+        let difference = new Date().getTime() - this.lastHit; // in ms
+        difference = difference / 1000; // in s
+        return difference < 0.25;  
+    }
+
+    isDead() {
+        return this.energy == 0;
+    }
+
 }
