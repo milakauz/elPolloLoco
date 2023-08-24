@@ -1,4 +1,4 @@
-class Coin extends Collectable {
+class Coin extends MovableObject {
     PULSATING_IMAGES = [
         'img/8_coin/coin_1.png',
         'img/8_coin/coin_2.png'
