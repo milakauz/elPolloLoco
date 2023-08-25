@@ -15,11 +15,8 @@ class CoinBar extends StatusBar {
         this.loadImage('img/7_statusbars/1_statusbar/1_statusbar_coin/blue/0.png');
         this.loadImages(this.IMAGES);
         this.y = 100;
-        console.log(this.collectedCoins);
-        // super().updateBar(this.collectedCoins);
     }
 
-        
     updateBar() {
         let imagePath = this.IMAGES[this.resolveImageIndexCollectables(this.collectedCoins)];
         this.img = this.imageCache[imagePath];

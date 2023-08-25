@@ -33,5 +33,4 @@ class StatusBar extends drawableObject {
         }
     }
 
-
 }
