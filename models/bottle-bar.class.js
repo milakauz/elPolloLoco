@@ -1,5 +1,5 @@
 class BottleBar extends StatusBar {
-    percentage = 0;
+    collectedBottles = 0;
 
     IMAGES = [
        'img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/0.png', 
@@ -15,5 +15,10 @@ class BottleBar extends StatusBar {
         this.loadImage('img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/0.png');
         this.loadImages(this.IMAGES);
         this.y = 150;
+    }
+
+    updateBar() {
+        let imagePath = this.IMAGES[this.resolveImageIndexCollectables(this.collectedBottles)];
+        this.img = this.imageCache[imagePath];
     }
 }
