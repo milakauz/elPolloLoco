@@ -1,5 +1,6 @@
 class CoinBar extends StatusBar {
     collectedCoins = 0;
+    collecting_sound = new Audio('audio/collect_coin.mp3');
 
     IMAGES = [
         'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/0.png',
@@ -20,5 +21,6 @@ class CoinBar extends StatusBar {
     updateBar() {
         let imagePath = this.IMAGES[this.resolveImageIndexCollectables(this.collectedCoins)];
         this.img = this.imageCache[imagePath];
+        this.playCollectingSound(this.collecting_sound);
     }
 }

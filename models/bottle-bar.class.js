@@ -1,5 +1,6 @@
 class BottleBar extends StatusBar {
     collectedBottles = 0;
+    collecting_sound = new Audio('audio/collect_bottle.mp3')
 
     IMAGES = [
        'img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/0.png', 
@@ -20,5 +21,6 @@ class BottleBar extends StatusBar {
     updateBar() {
         let imagePath = this.IMAGES[this.resolveImageIndexCollectables(this.collectedBottles)];
         this.img = this.imageCache[imagePath];
+        this.playCollectingSound(this.collecting_sound);
     }
 }

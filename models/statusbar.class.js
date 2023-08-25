@@ -33,4 +33,8 @@ class StatusBar extends drawableObject {
         }
     }
 
+    playCollectingSound(audio) {
+        console.log('Audio soll avgespelt werden');
+        audio.play();
+    }
 }
