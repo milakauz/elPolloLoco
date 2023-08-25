@@ -20,13 +20,13 @@ class StatusBar extends drawableObject {
     }
 
     resolveImageIndexCollectables(collectables) {
-        if (collectables > 0) {
+        if (collectables == 1) {
             return 1;
-        } else if (collectables > 1) {
+        } else if (collectables == 2) {
             return 2;
-        } else if (collectables > 2) {
+        } else if (collectables == 3) {
             return 3;
-        } else if (collectables > 3) {
+        } else if (collectables == 4) {
             return 4;
         } else {
             return 5;

@@ -21,9 +21,7 @@ class CoinBar extends StatusBar {
 
         
     updateBar() {
-        // this.collectedCoins = collectables;
         let imagePath = this.IMAGES[this.resolveImageIndexCollectables(this.collectedCoins)];
         this.img = this.imageCache[imagePath];
-        console.log('coinsbar wird geupdatet', this.collectedCoins);
     }
 }
