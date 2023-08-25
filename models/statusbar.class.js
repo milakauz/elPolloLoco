@@ -1,6 +1,7 @@
 class StatusBar extends drawableObject {
     height = 50;
     width = 250;
+    x = 50;
 
     resolveImageIndex() {
         if (this.percentage == 100) {
