@@ -84,20 +84,6 @@ class World {
         this.bottlesBar.updateBar();
     }
 
-
-
-    //     this.level.bottles.forEach((bottle, i) => {
-    //     if (this.character.isColliding(bottle)) {
-    //         console.log('FLASCHE GETROFFEN!');
-    //         // this.character.collectedBottles.push(+1);
-    //         console.log(this.character.collectedBottles);
-    //         // Charakter muss sammeln 
-    //         // Bottle muss bei collision sofort gelöscht werden
-    //         this.ctx.clearRect(bottle.y, bottle.x, bottle.width, bottle.height);
-    //         this.level.bottles.splice(i, 1);
-    //     }
-    // };
-
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
