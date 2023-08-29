@@ -1,9 +1,9 @@
 class Coin extends MovableObject {
     offSet = {
-        top: 5,
-        right: 5,
-        bottom: 0,
-        left: 5
+        top: 50,
+        right: 55,
+        bottom: 50,
+        left: 55 
     }
     PULSATING_IMAGES = [
         'img/8_coin/coin_1.png',

@@ -4,9 +4,9 @@ class Bottle extends MovableObject {
     width = 70;
     offSet = {
         top: 5,
-        right: 5,
-        bottom: 0,
-        left: 5
+        right: 55,
+        bottom: 5,
+        left: 55 
     }
 
     constructor(imagePath) {
