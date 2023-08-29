@@ -55,7 +55,7 @@ class MovableObject extends drawableObject {
 
     isColliding(obj) {
         return (
-            this.leftColliding(obj) && 
+            this.leftColliding(obj) &&
             this.rightColliding(obj) &&
             this.bottomColliding(obj) &&
             this.topColliding(obj)
@@ -63,11 +63,8 @@ class MovableObject extends drawableObject {
     }
 
     bottomColliding(obj) {
-        // console.log(obj.y + obj.offSet.top);
-        // console.log('character trifft huhn oben!')
         return (
-            this.y + this.height - this.offSet.bottom >
-            obj.y + obj.offSet.top
+            this.y + this.height - this.offSet.bottom > obj.y + obj.offSet.top
         );
     }
 
@@ -79,22 +76,17 @@ class MovableObject extends drawableObject {
     }
 
     leftColliding(obj) {
-        if (!obj || !obj.offSet || typeof obj.offSet.bottom === 'undefined' || !this.offSet || typeof this.offSet.top === 'undefined') {
-            console.error('Ungültiges obj oder fehlende offSet-Eigenschaft!');
-            console.error(obj)
-            return false;
-        }
         return (
-			this.y + this.offSet.top <
-			obj.y + obj.height - obj.offSet.bottom
-		);
+            this.y + this.offSet.top <
+            obj.y + obj.height - obj.offSet.bottom
+        );
     }
 
     topColliding(obj) {
         return (
-			this.y + this.offSet.top <
-			obj.y + obj.height - obj.offSet.bottom
-		);
+            this.y + this.offSet.top <
+            obj.y + obj.height - obj.offSet.bottom
+        );
     }
 
 
@@ -117,5 +109,4 @@ class MovableObject extends drawableObject {
     isDead() {
         return this.energy == 0;
     }
-
 }
