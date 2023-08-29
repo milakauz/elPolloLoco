@@ -11,7 +11,7 @@ class MovableObject extends drawableObject {
             ctx.beginPath();
             ctx.lineWidth = '3';
             ctx.strokeStyle = 'black';
-            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.rect(this.x + this.offSet.left, this.y + this.offSet.top, this.width - this.offSet.right - this.offSet.left, this.height - this.offSet.top - this.offSet.bottom);
             ctx.stroke();
         }
     }
@@ -53,12 +53,20 @@ class MovableObject extends drawableObject {
         }
     }
 
-    isColliding(mo) {
-        return this.x + this.width > mo.x &&
-            this.y + this.height > mo.y &&
-            this.x < mo.x &&
-            this.y < mo.y + mo.height
+    isColliding(obj) {
+        // x- Achse: rechts oben ist kleiner als links oben && links oben ist kleiner als rechts oben
+        return (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) &&
+        // y-Achse von rechts
+            (this.y + this.offSet.right + this.height) >= obj.y &&
+        // y-Achse von links
+            (this.y + this.offSet.left) <= (obj.y + obj.height);
     }
+
+    // bottomColliding(obj) {
+    //     this.y + this.offSet.top > obj.y + obj.width;
+    //     console.log('character trifft huhn oben!');
+    // }
+
 
     hit() {
         this.energy -= 5;
@@ -73,7 +81,7 @@ class MovableObject extends drawableObject {
     isHurt() {
         let difference = new Date().getTime() - this.lastHit; // in ms
         difference = difference / 1000; // in s
-        return difference < 0.25;  
+        return difference < 0.25;
     }
 
     isDead() {
