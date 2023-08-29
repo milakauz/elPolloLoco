@@ -40,10 +40,14 @@ class World {
     }
 
     checkCollisions() {
-        this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
+        this.level.enemies.forEach((enemy, i) => {
+            if (this.character.isColliding(enemy) && !this.character.isAboveGround()) {
                 this.character.hit();
                 this.healthBar.setPercentage(this.character.energy)
+            }
+            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+                enemy.dies();
+                this.level.enemies.splice(i, 1);
             }
         });
     }
