@@ -7,7 +7,7 @@ class MovableObject extends drawableObject {
     lastHit = 0;
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chicken) {
+        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof Coin || this instanceof Bottle) {
             ctx.beginPath();
             ctx.lineWidth = '3';
             ctx.strokeStyle = 'black';
@@ -54,18 +54,48 @@ class MovableObject extends drawableObject {
     }
 
     isColliding(obj) {
-        // x- Achse: rechts oben ist kleiner als links oben && links oben ist kleiner als rechts oben
-        return (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) &&
-        // y-Achse von rechts
-            (this.y + this.offSet.right + this.height) >= obj.y &&
-        // y-Achse von links
-            (this.y + this.offSet.left) <= (obj.y + obj.height);
+        return (
+            this.leftColliding(obj) && 
+            this.rightColliding(obj) &&
+            this.bottomColliding(obj) &&
+            this.topColliding(obj)
+        );
     }
 
-    // bottomColliding(obj) {
-    //     this.y + this.offSet.top > obj.y + obj.width;
-    //     console.log('character trifft huhn oben!');
-    // }
+    bottomColliding(obj) {
+        // console.log(obj.y + obj.offSet.top);
+        // console.log('character trifft huhn oben!')
+        return (
+            this.y + this.height - this.offSet.bottom >
+            obj.y + obj.offSet.top
+        );
+    }
+
+    rightColliding(obj) {
+        return (
+            this.x + this.width - this.offSet.right >
+            obj.x + obj.offSet.left
+        );
+    }
+
+    leftColliding(obj) {
+        if (!obj || !obj.offSet || typeof obj.offSet.bottom === 'undefined' || !this.offSet || typeof this.offSet.top === 'undefined') {
+            console.error('Ungültiges obj oder fehlende offSet-Eigenschaft!');
+            console.error(obj)
+            return false;
+        }
+        return (
+			this.y + this.offSet.top <
+			obj.y + obj.height - obj.offSet.bottom
+		);
+    }
+
+    topColliding(obj) {
+        return (
+			this.y + this.offSet.top <
+			obj.y + obj.height - obj.offSet.bottom
+		);
+    }
 
 
     hit() {
