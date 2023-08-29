@@ -1,10 +1,17 @@
 class Coin extends MovableObject {
+    offSet = {
+        top: 5,
+        right: 5,
+        bottom: 0,
+        left: 5
+    }
     PULSATING_IMAGES = [
         'img/8_coin/coin_1.png',
         'img/8_coin/coin_2.png'
     ]
     constructor(imagePath) {
-        super().loadImage(imagePath);
+        super();
+        this.loadImage(imagePath);
         this.loadImages(this.PULSATING_IMAGES);
         this.x = 150 + Math.random() * 2200;
         this.y = 120 + Math.random() * 80;
