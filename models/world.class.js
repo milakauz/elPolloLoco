@@ -34,9 +34,26 @@ class World {
 
     checkThrowObjects() {
         if (this.keyboard.D) {
-            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
-            this.throwableObjects.push(bottle);
+            if (this.checkBottlesToThrow()) {
+                let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+                this.throwableObjects.push(bottle);
+                this.removeBottleFromCollection();
+            }
         }
+    }
+
+    checkBottlesToThrow() {
+        if (this.bottlesBar.collectedBottles === 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    removeBottleFromCollection() {
+        this.bottlesBar.collectedBottles--;
+        console.log(this.bottlesBar.collectedBottles);
+        this.bottlesBar.updateBar();
     }
 
     checkCollisions() {
