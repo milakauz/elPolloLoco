@@ -2,7 +2,102 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url('img/5_background/body_background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vw;
+    overflow: hidden;
 }
-canvas {
-    background-color: black;
+
+/* canvas {
+} */
+
+#canvasContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 800px;
+    height: 480px;
+    margin-top: 200px;
+}
+
+#startScreenContainer {
+    background-image: url('img/9_intro_outro_screens/start/startscreen_2.png');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#soundOn {
+    display: none;
+}
+
+.d-none {
+    display: none;
+}
+
+#gameIcons {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    top: 0;
+}
+
+button {
+    border: none;
+    background-color: #EDE9D0;
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    /* box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+     */
+    /* animation effects  */
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+button:hover {
+    cursor: pointer;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    background-color: #FFF6F3;
+    border: 2px solid #c76758;
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #FFF6F3;
+    color: #c76758;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+button img {
+    height: 32px;
+    width: 32px;
 }
