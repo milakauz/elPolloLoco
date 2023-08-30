@@ -63,7 +63,9 @@ class World {
                 this.healthBar.setPercentage(this.character.energy)
             }
             if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
-               enemy.disappear();
+                let chicken = this.level.enemies;
+                enemy.disappear(chicken, i);
+                console.log('pepe jumps on chicken!');
                 // this.level.enemies.splice(i, 1);
             }
         });
