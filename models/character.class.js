@@ -57,6 +57,10 @@ class Character extends MovableObject {
         this.applyGravity();
     }
 
+    jump() {
+        this.speedY = 25;
+    }
+
     animate() {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
