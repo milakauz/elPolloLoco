@@ -35,12 +35,14 @@ class Chicken extends MovableObject {
         }, 200);
     }
 
-    disappear() {
+    disappear(chicken, i) {
         let deathInterval = setInterval(() => {
-            this.playAnimation(this.IMAGE_DEAD);
+            this.loadImage(this.IMAGE_DEAD)
+            // this.playAnimation(this.IMAGE_DEAD);
             setTimeout(() => {
                 clearInterval(deathInterval);
-            }, 200);
-        }, 1500);
+                // chicken.splice(i, 1);
+            }, 3000);
+        }, 5500);
     }
 }
