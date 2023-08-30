@@ -38,7 +38,6 @@ class Chicken extends MovableObject {
     disappear(chicken, i) {
         let deathInterval = setInterval(() => {
             this.loadImage(this.IMAGE_DEAD)
-            // this.playAnimation(this.IMAGE_DEAD);
             setTimeout(() => {
                 clearInterval(deathInterval);
                 // chicken.splice(i, 1);
