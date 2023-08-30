@@ -22,15 +22,16 @@ class ThrowableObject extends MovableObject {
 
     throw() {
         this.applyGravity();
+        this.animate();
         setInterval(() => {
-            this.animate();
             this.x += 10;
         }, 25);
     }
 
     animate() {
         console.log('Hi, animate() wird aufgerufen');
-        //von wo?
-        this.playAnimation(this.IMAGES_ROTATING);
+        setInterval(() => {
+            this.playAnimation(this.IMAGES_ROTATING);
+        }, 1000 / 3);
     }
 }
