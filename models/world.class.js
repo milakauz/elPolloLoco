@@ -61,12 +61,11 @@ class World {
             if (this.character.isColliding(enemy) && !this.character.isAboveGround()) {
                 this.character.hit();
                 this.healthBar.setPercentage(this.character.energy)
-            }
-            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
-                let chicken = this.level.enemies;
-                enemy.disappear(chicken, i);
-                console.log('pepe jumps on chicken!');
-                // this.level.enemies.splice(i, 1);
+            } else if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+                enemy.dies();
+                if (enemy.currentImage >= 2) {
+                    this.level.enemies.splice(i, 1);
+                }
             }
         });
     }
