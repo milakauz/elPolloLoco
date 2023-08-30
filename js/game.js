@@ -1,9 +1,17 @@
-let canvas;
+let canvas = document.getElementById('canvas');
+let startScreen = document.getElementById('startScreenContainer');
+let startBtn = document.getElementById('startGameBtn');
 let world;
 let keyboard = new Keyboard();
 
-function init() {
-    canvas = document.getElementById('canvas');
+// function init() {
+//     canvas = document.getElementById('canvas');
+// }
+
+function startGame() {
+    startScreen.classList.add('d-none');
+    startBtn.classList.add('d-none');
+    canvas.classList.remove('d-none');
     world = new World(canvas, keyboard);
 }
 
