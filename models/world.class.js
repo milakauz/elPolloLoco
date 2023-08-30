@@ -64,9 +64,10 @@ class World {
             } else if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
                 enemy.dies();
                 setTimeout(() => {
-                    console.log(enemy.currentImage);
-                    this.level.enemies.splice(1);
-                }, 500);
+                    console.log(this.level.enemies[i].currentImage);
+                    this.level.enemies.splice(i, 1);
+                }, 400);
+
 
             }
         });
