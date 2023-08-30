@@ -24,10 +24,6 @@ class MovableObject extends drawableObject {
         this.x -= this.speed;
     }
 
-    jump() {
-        this.speedY = 25;
-    }
-
     playAnimation(images) {
         let i = this.currentImage % images.length;
         let path = images[i];
@@ -64,7 +60,8 @@ class MovableObject extends drawableObject {
 
     bottomColliding(obj) {
         return (
-            this.y + this.height - this.offSet.bottom > obj.y + obj.offSet.top
+            this.y + this.height - this.offSet.bottom > 
+            obj.y + obj.offSet.top
         );
     }
 
