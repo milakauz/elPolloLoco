@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,15 +24,56 @@
     <script src="models/collectables/coin.class.js"></script>
     <script src="models/collectables/bottle.class.js"></script>
     <script src="levels/level1.js"></script>
-    <script src="js/game.js"></script>
 </head>
-<body onload="init()" style="background-color: black;">
 
-    <h1>El Pollo Loco</h1>
+<!-- <body onload="init()"> -->
 
-    <canvas id="canvas" width="720" height="480">
+<body>
 
-    </canvas>
-    
+    <!--  c76758 icons  -->
+    <!-- hover icons FFF6F3 -->
+    <!-- cbcdcf icons-background -->
+    <div id="canvasContainer">
+        <div id="startScreenContainer"></div>
+        <div id="gameIcons">
+            <button onclick="startGame()" id="startGameBtn" class="tooltip">
+                <span class="tooltiptext">start your game!</span>
+                <img src="img/10_game_icons/startGame.png" alt="play_startGame">
+            </button>
+
+            <button class="tooltip">
+                <span class="tooltiptext">keyboard explained!</span>
+                <img src="/img/10_game_icons/joyStick.png" alt="joystick_keyExplanation">
+            </button>
+
+            <button class="tooltip">
+                <span class="tooltiptext">what's up?!</span>
+                <img src="/img/10_game_icons/information.png" alt="information">
+            </button>
+
+            <button class="tooltip" id="soundOff">
+                <span class="tooltiptext">turn off sound!</span>
+                <img src="/img/10_game_icons/soundOff.png" alt="sound_off">
+            </button>
+
+            <button id="soundOn" class="d-none tooltip">
+                <span class="tooltiptext">turn on sound!</span>
+                <img src="/img/10_game_icons/soundOn.png" alt="sound_on">
+            </button>
+
+            <button class="tooltip">
+                <span class="tooltiptext">fullscreen!</span>
+                <img src="/img/10_game_icons/fullScreen.png" alt="fullScreen">
+            </button>
+
+        </div>
+
+        <canvas id="canvas" class="d-none" height="480" width="800">
+        </canvas>
+
+    </div>
 </body>
+
+<script src="js/game.js"></script>
+
 </html>
