@@ -63,8 +63,8 @@ class World {
                 this.healthBar.setPercentage(this.character.energy)
             }
             if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
-                enemy.dies();
-                this.level.enemies.splice(i, 1);
+               enemy.disappear();
+                // this.level.enemies.splice(i, 1);
             }
         });
     }
