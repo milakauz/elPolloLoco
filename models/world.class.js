@@ -23,12 +23,36 @@ class World {
         this.character.world = this;
     }
 
+    draw() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.translate(this.camera_x, 0);
+        this.addObjectsToMap(this.level.backgroundObjects);
+        this.ctx.translate(-this.camera_x, 0); // backwards
+        this.addToMap(this.healthBar);
+        this.addToMap(this.coinsBar);
+        this.addToMap(this.bottlesBar);
+        this.ctx.translate(this.camera_x, 0); //forwards
+        this.addToMap(this.character);
+        this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.endboss);
+        this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.bottles);
+        this.addObjectsToMap(this.throwableObjects);
+        this.ctx.translate(-this.camera_x, 0);
+        let self = this;
+        requestAnimationFrame(function () {
+            self.draw();
+        });
+    }
+
     run() {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
             this.checkCoinCollisions();
             this.checkBottleCollisions();
+            this.checkBottleEnemyCollisions();
         }, 200);
     }
 
@@ -52,14 +76,13 @@ class World {
 
     removeBottleFromCollection() {
         this.bottlesBar.collectedBottles--;
-        console.log(this.bottlesBar.collectedBottles);
         this.bottlesBar.updateBar();
     }
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.energy > 0) {
-                this.character.hit();
+                this.character.hit(1);
                 this.healthBar.setPercentage(this.character.energy)
             } else if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
                 enemy.dies();
@@ -68,6 +91,21 @@ class World {
                     this.removeEnemyfromMap(enemy);
                 }
             }
+        });
+    }
+
+    checkBottleEnemyCollisions() {
+        this.throwableObjects.forEach((bottle) => {
+            this.level.endboss.forEach((endboss) => {
+                if (bottle.isColliding(endboss) && !endboss.isDead) {
+                    endboss.isHitFromBottle();
+                    setTimeout(() => {
+                        endboss.hit(4);
+                    }, 605);
+                    this.playSound(endboss.hitting_sound);
+                    console.log(endboss.energy);
+                }
+            });
         });
     }
 
@@ -82,7 +120,7 @@ class World {
             if (this.character.isColliding(coin)) {
                 this.removeCoinOffMap(i);
                 this.addCoinToStatusbar();
-                this.playCollectingSound(coin.collecting_sound);
+                this.playSound(coin.collecting_sound);
             }
         });
     }
@@ -92,7 +130,7 @@ class World {
             if (this.character.isColliding(bottle)) {
                 this.removeBottleOffMap(i);
                 this.addBottleToStatusbar();
-                this.playCollectingSound(bottle.collecting_sound);
+                this.playSound(bottle.collecting_sound);
             }
         });
     }
@@ -116,31 +154,10 @@ class World {
         this.bottlesBar.updateBar();
     }
 
-    playCollectingSound(audio) {
+    playSound(audio) {
         audio.play();
     }
 
-    draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.translate(this.camera_x, 0);
-        this.addObjectsToMap(this.level.backgroundObjects);
-        this.ctx.translate(-this.camera_x, 0); // backwards
-        this.addToMap(this.healthBar);
-        this.addToMap(this.coinsBar);
-        this.addToMap(this.bottlesBar);
-        this.ctx.translate(this.camera_x, 0); //forwards
-        this.addToMap(this.character);
-        this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.level.coins);
-        this.addObjectsToMap(this.level.bottles);
-        this.addObjectsToMap(this.throwableObjects);
-        this.ctx.translate(-this.camera_x, 0);
-        let self = this;
-        requestAnimationFrame(function () {
-            self.draw();
-        });
-    }
 
     addObjectsToMap(objects) {
         objects.forEach(o => {
