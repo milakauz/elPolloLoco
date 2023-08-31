@@ -58,13 +58,15 @@ class MovableObject extends drawableObject {
         );
     }
 
+    // bottom edge of this is bigger than upper edge of obj
     bottomColliding(obj) {
         return (
-            this.y + this.height - this.offSet.bottom > 
+            this.y + this.height - this.offSet.bottom >
             obj.y + obj.offSet.top
         );
     }
 
+    // right corner of this is bigger than left corner of obj
     rightColliding(obj) {
         return (
             this.x + this.width - this.offSet.right >
@@ -72,13 +74,15 @@ class MovableObject extends drawableObject {
         );
     }
 
+    // left corner of this is smaller than right corner of obj
     leftColliding(obj) {
         return (
-            this.y + this.offSet.top <
-            obj.y + obj.height - obj.offSet.bottom
+            this.x + this.offSet.left <
+            obj.x + obj.width - obj.offSet.right
         );
     }
 
+    // upper edge of this is smaller than lower edge of obj
     topColliding(obj) {
         return (
             this.y + this.offSet.top <
@@ -86,9 +90,9 @@ class MovableObject extends drawableObject {
         );
     }
 
-
-    hit() {
-        this.energy -= 5;
+    // endboss soll langsamer Energie verlieren als Character, deswegen x
+    hit(x) {
+        this.energy -= x * 5;
         this.isHurt();
         if (this.energy < 0) {
             this.energy = 0;
