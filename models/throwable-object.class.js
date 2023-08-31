@@ -29,7 +29,6 @@ class ThrowableObject extends MovableObject {
     }
 
     animate() {
-        console.log('Hi, animate() wird aufgerufen');
         setInterval(() => {
             this.playAnimation(this.IMAGES_ROTATING);
         }, 1000 / 3);
