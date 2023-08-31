@@ -58,19 +58,25 @@ class World {
 
     checkCollisions() {
         this.level.enemies.forEach((enemy, i) => {
-            if (this.character.isColliding(enemy) && !this.character.isAboveGround()) {
+            if (this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.energy > 0) {
                 this.character.hit();
                 this.healthBar.setPercentage(this.character.energy)
             } else if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
                 enemy.dies();
-                setTimeout(() => {
-                    console.log(this.level.enemies[i].currentImage);
-                    this.level.enemies.splice(i, 1);
-                }, 400);
-
-
+                enemy.energy--;
+                if (enemy.energy === 0) {
+                    this.removeEnemyfromMap(enemy);
+                }
             }
         });
+    }
+
+    removeEnemyfromMap(obj) {
+         setTimeout(() => {
+            this.level.enemies.splice(this.level.enemies.indexOf(obj), 1);
+            // this.y -= 50;
+            // this.x = this.x;
+        }, 1000);
     }
 
     checkCoinCollisions() {
