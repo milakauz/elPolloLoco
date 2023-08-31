@@ -1,6 +1,13 @@
 class ThrowableObject extends MovableObject {
     speedY = 30;
     speedX = 20;
+    // only for calculating collisions. otherwise console.error (offSet.left is not defined)
+    offSet = {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
+    }
 
     IMAGES_ROTATING = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
@@ -31,6 +38,6 @@ class ThrowableObject extends MovableObject {
     animate() {
         setInterval(() => {
             this.playAnimation(this.IMAGES_ROTATING);
-        }, 1000 / 3);
+        }, 150);
     }
 }
