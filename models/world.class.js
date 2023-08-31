@@ -57,7 +57,7 @@ class World {
     }
 
     checkCollisions() {
-        this.level.enemies.forEach((enemy, i) => {
+        this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.energy > 0) {
                 this.character.hit();
                 this.healthBar.setPercentage(this.character.energy)
@@ -72,10 +72,8 @@ class World {
     }
 
     removeEnemyfromMap(obj) {
-         setTimeout(() => {
+        setTimeout(() => {
             this.level.enemies.splice(this.level.enemies.indexOf(obj), 1);
-            // this.y -= 50;
-            // this.x = this.x;
         }, 1000);
     }
 
@@ -84,6 +82,7 @@ class World {
             if (this.character.isColliding(coin)) {
                 this.removeCoinOffMap(i);
                 this.addCoinToStatusbar();
+                this.playCollectingSound(coin.collecting_sound);
             }
         });
     }
@@ -93,9 +92,11 @@ class World {
             if (this.character.isColliding(bottle)) {
                 this.removeBottleOffMap(i);
                 this.addBottleToStatusbar();
+                this.playCollectingSound(bottle.collecting_sound);
             }
         });
     }
+
 
     removeCoinOffMap(i) {
         this.level.coins.splice(i, 1);
@@ -113,6 +114,10 @@ class World {
     addBottleToStatusbar() {
         this.bottlesBar.collectedBottles++;
         this.bottlesBar.updateBar();
+    }
+
+    playCollectingSound(audio) {
+        audio.play();
     }
 
     draw() {

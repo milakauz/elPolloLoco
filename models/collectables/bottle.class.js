@@ -8,6 +8,8 @@ class Bottle extends MovableObject {
         bottom: 5,
         left: 55 
     }
+    collecting_sound = new Audio('audio/collect_bottle.mp3')
+
 
     constructor(imagePath) {
         super().loadImage(imagePath);

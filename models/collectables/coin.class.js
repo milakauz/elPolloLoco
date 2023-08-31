@@ -9,6 +9,8 @@ class Coin extends MovableObject {
         'img/8_coin/coin_1.png',
         'img/8_coin/coin_2.png'
     ]
+    collecting_sound = new Audio('audio/collect_coin.mp3');
+
     constructor(imagePath) {
         super();
         this.loadImage(imagePath);
@@ -23,6 +25,4 @@ class Coin extends MovableObject {
             this.playAnimation(this.PULSATING_IMAGES);
         }, 1000 / 2);
     }
-
-    
 }

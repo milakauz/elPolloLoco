@@ -34,8 +34,4 @@ class StatusBar extends drawableObject {
             return 5;
         }
     }
-
-    playCollectingSound(audio) {
-        audio.play();
-    }
 }
