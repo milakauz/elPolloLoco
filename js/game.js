@@ -15,6 +15,16 @@ function startGame() {
     world = new World(canvas, keyboard);
 }
 
+function showInformation() {
+    // document.getElementById('gameInformation').classList.remove('d-none');
+    document.getElementById('backgroundDialog').classList.remove('d-none');
+}
+
+function closeInformation() {
+    // document.getElementById('backgroundDialog').classList.add('d-none');
+    document.getElementById('backgroundDialog').classList.add('d-none');
+}
+
 document.addEventListener('keydown', (e) => {
     if ((e.keyCode == 38)) {
         keyboard.UP = true;
