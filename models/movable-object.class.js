@@ -107,6 +107,15 @@ class MovableObject extends drawableObject {
         return difference < 0.25;
     }
 
+    hitEndboss() {
+        this.energy -= 20;
+        if (this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
     isDead() {
         return this.energy == 0;
     }
