@@ -98,8 +98,9 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
                 if (bottle.isColliding(endboss) && !endboss.isDead) {
+                    this.deleteBottleFromArray(bottle);
                     endboss.hit(4);
-                    this.playSound(endboss.hitting_sound);
+                    this.playSound(endboss_hitting_sound);
                     console.log(endboss.energy);
                 }
             });
@@ -112,12 +113,16 @@ class World {
         }, 1000);
     }
 
+    deleteBottleFromArray(b) {
+        this.throwableObjects.splice(this.throwableObjects.indexOf(b),)
+    }
+
     checkCoinCollisions() {
         this.level.coins.forEach((coin, i) => {
             if (this.character.isColliding(coin)) {
                 this.removeCoinOffMap(i);
                 this.addCoinToStatusbar();
-                this.playSound(coin.collecting_sound);
+                this.playSound(coin_collecting_sound);
             }
         });
     }
@@ -127,7 +132,7 @@ class World {
             if (this.character.isColliding(bottle)) {
                 this.removeBottleOffMap(i);
                 this.addBottleToStatusbar();
-                this.playSound(bottle.collecting_sound);
+                this.playSound(bottle_collecting_sound);
             }
         });
     }
