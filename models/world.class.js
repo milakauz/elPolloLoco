@@ -53,7 +53,7 @@ class World {
             this.checkCoinCollisions();
             this.checkBottleCollisions();
             this.checkBottleEnemyCollisions();
-        }, 200);
+        }, 100);
     }
 
     checkThrowObjects() {
@@ -98,10 +98,7 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
                 if (bottle.isColliding(endboss) && !endboss.isDead) {
-                    endboss.isHitFromBottle();
-                    setTimeout(() => {
-                        endboss.hit(4);
-                    }, 605);
+                    endboss.hitEndboss();
                     this.playSound(endboss.hitting_sound);
                     console.log(endboss.energy);
                 }
