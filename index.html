@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>El Pollo Loco</title>
+    <!-- <link rel="icon" type="image/jpg" href="img/favicon.png" /> -->
+    <link rel="icon" href="https://www.flaticon.com/de/kostenlose-icons/kaktus">
     <script src="models/drawable-object.class.js"></script>
     <script src="models/movable-object.class.js"></script>
     <script src="models/status-bar.class.js"></script>
@@ -38,7 +40,7 @@
         <div id="gameIcons">
             <button onclick="startGame()" id="startGameBtn" class="tooltip">
                 <span class="tooltiptext">start your game!</span>
-           
+
                 <img src="img/10_game_icons/startGame.png" alt="play_startGame">
             </button>
 
@@ -49,7 +51,6 @@
 
             <button class="tooltip" onclick="showInformation()">
                 <span class="tooltiptext">what's up?!</span>
-                <span class="d-none">Pepe Peligroso is fighting in multiple levels against his </enemies></span>
                 <img src="img/10_game_icons/information.png" alt="information">
             </button>
 
@@ -73,7 +74,11 @@
         <canvas id="canvas" class="d-none" height="480" width="800">
         </canvas>
 
+        <div id="backgroundDialog" class="d-none" onclick="closeInformation()">
+                <span id="gameInformation">Pepe Peligroso is fighting in multiple levels against his </enemies></span>
+        </div>
     </div>
+
 </body>
 
 <script src="js/game.js"></script>

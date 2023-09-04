@@ -97,6 +97,13 @@ button:hover {
     margin-left: -60px;
 }
 
+#backgroundDialog {
+    height: 480px;
+    width: 800px;
+    position: absolute;
+    background-color: #f7c274;
+}
+
 button img {
     height: 32px;
     width: 32px;
