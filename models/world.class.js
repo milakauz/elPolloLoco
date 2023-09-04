@@ -98,7 +98,7 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
                 if (bottle.isColliding(endboss) && !endboss.isDead) {
-                    endboss.hitEndboss();
+                    endboss.hit(4);
                     this.playSound(endboss.hitting_sound);
                     console.log(endboss.energy);
                 }
