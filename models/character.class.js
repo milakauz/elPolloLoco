@@ -39,8 +39,7 @@ class Character extends MovableObject {
         'img/2_character_pepe/5_dead/D-56.png',
         'img/2_character_pepe/5_dead/D-57.png'
     ]
-    walking_sound = new Audio('audio/running.mp3');
-    jumping_sound = new Audio('audio/jump.wav');
+   
 
     offSet = {
         top: 125,
@@ -66,20 +65,20 @@ class Character extends MovableObject {
     animate() {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.walking_sound.play();
+                character_walking_sound.play();
                 this.moveRight();
                 this.otherDirection = false;
             }
 
             if (this.world.keyboard.LEFT && this.x > 0) {
-                this.walking_sound.play();
+                character_walking_sound.play();
                 this.moveLeft();
                 this.otherDirection = true;
             }
 
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
-                this.playSound(this.jumping_sound)
+                this.playSound(character_jumping_sound)
             }
 
             this.world.camera_x = -this.x + 100;
