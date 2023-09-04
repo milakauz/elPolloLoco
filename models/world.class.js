@@ -7,6 +7,7 @@ class World {
     healthBar = new HealthBar();
     coinsBar = new CoinBar();
     bottlesBar = new BottleBar();
+    endbossEnergyBar = new EnergyBar();
     throwableObjects = [];
 
     constructor(canvas, keyboard) {
@@ -31,6 +32,7 @@ class World {
         this.addToMap(this.healthBar);
         this.addToMap(this.coinsBar);
         this.addToMap(this.bottlesBar);
+        this.addToMap(this.endbossEnergyBar);
         this.ctx.translate(this.camera_x, 0); //forwards
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
@@ -98,8 +100,11 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
                 if (bottle.isColliding(endboss) && !endboss.isDead) {
+                    this.playSound(bottle_splashing);
+                    bottle.isSplashed = true;
                     this.deleteBottleFromArray(bottle);
                     endboss.hit(4);
+                    this.endbossEnergyBar.setPercentage(endboss.energy)
                     this.playSound(endboss_hitting_sound);
                     console.log(endboss.energy);
                 }
@@ -113,8 +118,16 @@ class World {
         }, 1000);
     }
 
+    checkEndBossEnergy() {
+        if (endboss.energy == 0) {
+            endboss.isDead();
+            endboss.isDying = true;
+            console.log('endboss energie over');
+        }
+    }
+
     deleteBottleFromArray(b) {
-        this.throwableObjects.splice(this.throwableObjects.indexOf(b),)
+        this.throwableObjects.splice(this.throwableObjects.indexOf(b), 1);
     }
 
     checkCoinCollisions() {
