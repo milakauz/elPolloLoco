@@ -6,6 +6,8 @@ let background2 = document.getElementById('backgroundDialog2');
 let world;
 let keyboard = new Keyboard();
 let infoList = document.querySelectorAll('info');
+let soundOffContainer = document.getElementById('soundOff');
+let soundOnContainer = document.getElementById('soundOn');
 
 // function init() {
 //     canvas = document.getElementById('canvas');
@@ -39,6 +41,16 @@ function showKeyboardInformation() {
 function closeKeyboardInformation() {
     background2.classList.add('d-none');
     document.getElementById('keyboardInformation').classList.add('d-none');
+}
+
+function mute() {
+    soundOffContainer.classList.add('d-none');
+    soundOnContainer.classList.remove('d-none');
+}
+
+function unmute() {
+    soundOnContainer.classList.add('d-none');
+    soundOffContainer.classList.remove('d-none');
 }
 
 document.addEventListener('keydown', (e) => {
