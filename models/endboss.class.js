@@ -11,7 +11,6 @@ class Endboss extends MovableObject {
         bottom: 15,
         left: 100
     }
-    hitting_sound = new Audio('audio/hit_endboss.mp3');
     IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
         'img/4_enemie_boss_chicken/1_walk/G2.png',
@@ -57,13 +56,8 @@ class Endboss extends MovableObject {
             } else if (this.isHurt()) {
                 setTimeout(() => {
                     this.playAnimation(this.IMAGES_HURTING);
-                }, 500);
+                }, 100);
             }
         }, 200);
-    }
-
-
-    checkEndbossEnergy() {
-        console.log(this.energy);
     }
 }
