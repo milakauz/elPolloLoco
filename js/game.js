@@ -1,8 +1,11 @@
 let canvas = document.getElementById('canvas');
 let startScreen = document.getElementById('startScreenContainer');
 let startBtn = document.getElementById('startGameBtn');
+let background = document.getElementById('backgroundDialog1');
+let background2 = document.getElementById('backgroundDialog2');
 let world;
 let keyboard = new Keyboard();
+let infoList = document.querySelectorAll('info');
 
 // function init() {
 //     canvas = document.getElementById('canvas');
@@ -15,14 +18,27 @@ function startGame() {
     world = new World(canvas, keyboard);
 }
 
-function showInformation() {
-    // document.getElementById('gameInformation').classList.remove('d-none');
-    document.getElementById('backgroundDialog').classList.remove('d-none');
+function showGameInformation() {
+    background.classList.remove('d-none');
+    document.getElementById('gameInformation').classList.remove('d-none');
 }
 
-function closeInformation() {
-    // document.getElementById('backgroundDialog').classList.add('d-none');
-    document.getElementById('backgroundDialog').classList.add('d-none');
+function closeGameInformation() {
+    background.classList.add('d-none');
+    for (let i = 0; i < infoList.length; i++) {
+        const element = array[i];
+        element.classList.add('d-none');
+    }
+}
+
+function showKeyboardInformation() {
+    background2.classList.remove('d-none');
+    document.getElementById('keyboardInformation').classList.remove('d-none');
+}
+
+function closeKeyboardInformation() {
+    background2.classList.add('d-none');
+    document.getElementById('keyboardInformation').classList.add('d-none');
 }
 
 document.addEventListener('keydown', (e) => {

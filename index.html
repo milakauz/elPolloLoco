@@ -44,12 +44,12 @@
                 <img src="img/10_game_icons/startGame.png" alt="play_startGame">
             </button>
 
-            <button class="tooltip">
+            <button class="tooltip" onclick="showKeyboardInformation()">
                 <span class="tooltiptext">keyboard explained!</span>
                 <img src="img/10_game_icons/joyStick.png" alt="joystick_keyExplanation">
             </button>
 
-            <button class="tooltip" onclick="showInformation()">
+            <button class="tooltip" onclick="showGameInformation()">
                 <span class="tooltiptext">what's up?!</span>
                 <img src="img/10_game_icons/information.png" alt="information">
             </button>
@@ -74,8 +74,57 @@
         <canvas id="canvas" class="d-none" height="480" width="800">
         </canvas>
 
-        <div id="backgroundDialog" class="d-none" onclick="closeInformation()">
-                <span id="gameInformation">Pepe Peligroso is fighting in multiple levels against his </enemies></span>
+        <div id="backgroundDialog1" class="d-none" onclick="closeGameInformation()">
+            <div class="info">
+                <h1>El Pollo Loco</h1>
+                <p id="gameInformation">In El Pollo Loco you step into the shoes of
+                    Pepe Peligroso.<br><br>Pepe is a fearless farmer without wings. After being enchanted by his
+                    brother-in-law and
+                    giving up meat, his chickens have become confused, angry, and unpredictable. They multiply rapidly
+                    and
+                    want to kill Pepe unless he slaughters them. <br><br>
+                    Pepe Peligroso, once a lover of grilled chicken, now armed with bottles full of magical potion,
+                    enters
+                    the battle against the chickens for his farm and for the freedom of vegetarians.
+                </p>
+            </div>
+
+        </div>
+        <div id="backgroundDialog2" class="d-none" onclick="closeKeyboardInformation()">
+            <div class="info">
+                <h1>Keyboard</h1>
+                <p id="keyboardInformation" class="d-none info">
+
+                    <div class="key-explanations">
+                        <span class="circle">
+                            <img src="img/10_game_icons/key_space.png" alt="spacebar">
+                        </span>
+                        <span>jump</span>
+                    </div>
+
+                    <div class="key-explanations">
+                        <span class="circle">
+                            <img src="img/10_game_icons/key_arrowLeft.png" alt="arrow left">
+                        </span>
+                        <span>run left</span>
+                    </div>
+
+                    <div class="key-explanations">
+                        <span class="circle">
+                            <img src="img/10_game_icons/key_arrowRight.png" alt="arrow right">
+                        </span>
+                        <span>run right</span>
+                    </div>
+
+                    <div class="key-explanations">
+                        <span class="circle">
+                            <img src="img/10_game_icons/key_D.png" alt="">
+                        </span>
+                        <span>throw bottles</span>
+                    </div>
+
+                </p>
+            </div>
         </div>
     </div>
 

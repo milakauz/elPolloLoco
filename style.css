@@ -1,4 +1,15 @@
+/* offside-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Offside';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/offside-v24-latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
 body {
+    font-family: 'Offside';
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,11 +108,43 @@ button:hover {
     margin-left: -60px;
 }
 
-#backgroundDialog {
+#backgroundDialog1,
+#backgroundDialog2 {
     height: 480px;
     width: 800px;
     position: absolute;
     background-color: #f7c274;
+}
+
+#backgroundDialog1 h1,
+#backgroundDialog2 h1 {
+    text-transform: uppercase;
+}
+
+#backgroundDialog1 .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.6;
+    /* margin-left: 80px; */
+}
+
+.info p {
+    margin: 0 80px;
+    text-align: center;
+}
+
+#backgroundDialog2 .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.key-explanations {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
 }
 
 button img {
