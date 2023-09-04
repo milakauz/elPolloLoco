@@ -17,9 +17,9 @@ class HealthBar extends StatusBar {
         this.setPercentage(100);
     }
 
-    setPercentage(percentage) {
-        this.percentage = percentage;
-        let imagePath = this.IMAGES[this.resolveImageIndex()];
-        this.img = this.imageCache[imagePath];
-    }
+    // setPercentage(percentage) {
+    //     this.percentage = percentage;
+    //     let imagePath = this.IMAGES[this.resolveImageIndex()];
+    //     this.img = this.imageCache[imagePath];
+    // }
 }
