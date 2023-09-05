@@ -20,27 +20,28 @@ let sounds = [
 ]
 
 function mute() {
-    if (muted == false) {
-        muted = true;
-        for (let i = 0; i < sounds.length; i++) {
-            const sound = sounds[i];
+
+    for (let i = 0; i < sounds.length; i++) {
+        const sound = sounds[i];
+        if (sound.muted == false) {
             sound.muted = true;
         }
-        console.log('LEISE!')
-        soundOffContainer.classList.add('d-none');
-        soundOnContainer.classList.remove('d-none');
     }
+    console.log('LEISE!')
+    soundOffContainer.classList.add('d-none');
+    soundOnContainer.classList.remove('d-none');
 }
 
 function unmute() {
-    if (muted == true) {
-        muted = false;
-        soundOnContainer.classList.add('d-none');
-        soundOffContainer.classList.remove('d-none');
-        for (let i = 0; i < sounds.length; i++) {
+
+    for (let i = 0; i < sounds.length; i++) {
+        if (muted == true) {
+
             const sound = sounds[i];
             sound.muted = false;
         }
         console.log('LAUT!');
+        soundOnContainer.classList.add('d-none');
+        soundOffContainer.classList.remove('d-none');
     }
 }
