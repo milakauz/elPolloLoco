@@ -109,7 +109,7 @@ button:hover {
     height: 480px;
     width: 800px;
     position: absolute;
-    background-color: #f7c274;
+    background-color: rgba(247, 194, 116, 0.8);
 }
 
 #backgroundDialog1 h1,
