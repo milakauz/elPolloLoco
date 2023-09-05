@@ -99,10 +99,12 @@ class World {
     checkBottleEnemyCollisions() {
         this.throwableObjects.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
-                if (bottle.isColliding(endboss) && !endboss.isDead) {
+                if (bottle.isColliding(endboss) && !endboss.isDead && !bottle.isSplashed) {
                     this.playSound(bottle_splashing);
                     bottle.isSplashed = true;
-                    this.deleteBottleFromArray(bottle);
+                    setTimeout(() => {
+                        this.deleteBottleFromArray(bottle);
+                    }, 500);
                     endboss.hit(4);
                     this.endbossEnergyBar.setPercentage(endboss.energy)
                     this.playSound(endboss_hitting_sound);
