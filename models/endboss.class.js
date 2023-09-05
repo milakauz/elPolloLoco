@@ -2,7 +2,7 @@ class Endboss extends MovableObject {
     height = 400;
     width = 400;
     y = 65;
-    isDead = false;
+    isDying = false;
     // isHit = false;
     energy = 100;
     offSet = {
@@ -53,13 +53,22 @@ class Endboss extends MovableObject {
             this.moveLeft()
         }, 1000 / 100);
 
-        setInterval(() => {
-            if (!this.isHurt()) {
+        let endbossInterval = setInterval(() => {
+            if (!this.isHurt() && !this.isDying) {
                 this.playAnimation(this.IMAGES_WALKING)
-            } else if (this.isHurt()) {
+            } else if (this.isHurt() && !this.isDying) {
                 setTimeout(() => {
                     this.playAnimation(this.IMAGES_HURTING);
                 }, 100);
+            } else if (this.isDying) {
+                clearInterval(movingEndboss);
+                this.playAnimation(this.IMAGES_DYING);
+                this.y += 25;
+            } else if (!this.isHurt() && this.isDying) {
+                setTimeout(() => {
+                    clearInxterval(endbossInterval);
+                    console.log('Intervall wird gelöscht');
+                }, 3000);
             }
         }, 200);
     }
