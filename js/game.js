@@ -103,3 +103,20 @@ document.addEventListener('keyup', (e) => {
         keyboard.D = false;
     }
 })
+
+function showEndScreen(a) {
+    document.getElementById('endScreenContainer').classList.remove('d-none');
+    if (a == 'NPC') {
+        startBtn.classList.remove('d-none');
+        document.getElementById('NPCDead').classList.remove('d-none');
+        console.log('Endscreen NPC ist tot wird aufgerufen!');
+    } else if (a == 'PC') {
+        document.getElementById('PCDead').classList.remove('d-none');
+    }
+}
+
+function cleaningCanvas() {
+    document.getElementById('endScreenContainer').classList.add('d-none');
+    document.getElementById('PCDead').classList.add('d-none');
+    document.getElementById('endBtn').classList.add('d-none');
+}

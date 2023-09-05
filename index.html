@@ -39,6 +39,23 @@
     <!-- cbcdcf icons-background -->
     <div id="canvasContainer">
         <div id="startScreenContainer"></div>
+        <div id="endScreenContainer" class="d-none">
+            <div id="NPCDead" class="d-none">
+                <h1>¡¡Genial!!</h1>
+                <span>With your help, Pepe Peligroso got his farm back! <br>
+                    Now he can relax and enjoy his fruits &
+                    veggies!
+                </span>
+                <button id="nextLevelBtn">
+                    ¡next level!
+                </button>
+            </div>
+            <div id="PCDead" class="d-none">
+                <button id="endBtn" onclick="startGame(); cleaningCanvas()">
+                    ¡try again!
+                </button>
+            </div>
+        </div>
         <div id="gameIcons">
             <button onclick="startGame()" id="startGameBtn" class="tooltip">
                 <span class="tooltiptext">start your game!</span>
