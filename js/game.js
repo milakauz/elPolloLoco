@@ -7,6 +7,10 @@ let world;
 let keyboard = new Keyboard();
 let infoList = document.querySelectorAll('info');
 
+function init() {
+    getSoundStorage();
+}
+
 function startGame() {
     startScreen.classList.add('d-none');
     startBtn.classList.add('d-none');
