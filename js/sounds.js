@@ -35,9 +35,8 @@ function mute() {
 function unmute() {
 
     for (let i = 0; i < sounds.length; i++) {
-        if (muted == true) {
-
-            const sound = sounds[i];
+        const sound = sounds[i];
+        if (sound.muted == true) {
             sound.muted = false;
         }
         console.log('LAUT!');
