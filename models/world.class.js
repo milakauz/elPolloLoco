@@ -99,7 +99,7 @@ class World {
     checkBottleEnemyCollisions() {
         this.throwableObjects.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
-                if (bottle.isColliding(endboss) && !endboss.isDead && !bottle.isSplashed) {
+                if (bottle.isColliding(endboss) && !endboss.isDying && !bottle.isSplashed) {
                     this.playSound(bottle_splashing);
                     bottle.isSplashed = true;
                     setTimeout(() => {
@@ -108,7 +108,11 @@ class World {
                     endboss.hit(4);
                     this.endbossEnergyBar.setPercentage(endboss.energy)
                     this.playSound(endboss_hitting_sound);
-                    console.log(endboss.energy);
+                    // this.checkEndBossEnergy(endboss, endboss.energy);
+                } else if (bottle.isColliding(endboss) && endboss.energy == 0) {
+                    endboss.isDead();
+                    endboss.isDying = true;
+                    this.removeEndbossFromMap(endboss);
                 }
             });
         });
@@ -120,12 +124,11 @@ class World {
         }, 1000);
     }
 
-    checkEndBossEnergy() {
-        if (endboss.energy == 0) {
-            endboss.isDead();
-            endboss.isDying = true;
-            console.log('endboss energie over');
-        }
+    removeEndbossFromMap(endboss) {
+        setTimeout(() => {
+            console.log('endboss will be removed!');
+            this.level.endboss.splice(this.level.endboss.indexOf(endboss), 1);
+        }, 3200);
     }
 
     deleteBottleFromArray(b) {
