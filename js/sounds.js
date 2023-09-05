@@ -5,7 +5,7 @@ const bottle_collecting_sound = new Audio('audio/collect_bottle.mp3');
 const bottle_splashing = new Audio('./audio/glass.mp3')
 const coin_collecting_sound = new Audio('audio/collect_coin.mp3');
 
-// var muted = false;
+let soundTuning;
 
 let sounds = [
     character_jumping_sound,
@@ -25,7 +25,8 @@ function mute() {
             sound.muted = true;
         }
     }
-    console.log('LEISE!')
+    soundTuning = 'muted';
+    saveSoundStorage();
     soundOffContainer.classList.add('d-none');
     soundOnContainer.classList.remove('d-none');
 }
@@ -39,8 +40,26 @@ function unmute() {
         if (sound.muted == true) {
             sound.muted = false;
         }
-        console.log('LAUT!');
+        soundTuning = 'unmuted';
+        saveSoundStorage();
         soundOnContainer.classList.add('d-none');
         soundOffContainer.classList.remove('d-none');
+    }
+}
+
+function saveSoundStorage() {
+    localStorage.setItem('sound', JSON.stringify(soundTuning));
+}
+
+function getSoundStorage() {
+    soundTuning = JSON.parse(localStorage.getItem('sound'))
+    regulateSound();
+}
+
+function regulateSound() {
+    if (soundTuning == 'muted') {
+        mute();
+    } else if (soundTuning == 'unmuted') {
+        unmute();
     }
 }
