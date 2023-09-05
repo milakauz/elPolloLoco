@@ -1,7 +1,3 @@
-let soundOffContainer = document.getElementById('soundOff');
-let soundOnContainer = document.getElementById('soundOn');
-
-
 const character_jumping_sound = new Audio('audio/jump.wav');
 const character_walking_sound = new Audio('audio/running.mp3');
 const endboss_hitting_sound = new Audio('./audio/hit_endboss.mp3');
@@ -20,6 +16,8 @@ let sounds = [
 ]
 
 function mute() {
+    let soundOffContainer = document.getElementById('soundOff');
+    let soundOnContainer = document.getElementById('soundOn');
 
     for (let i = 0; i < sounds.length; i++) {
         const sound = sounds[i];
@@ -33,6 +31,8 @@ function mute() {
 }
 
 function unmute() {
+    let soundOffContainer = document.getElementById('soundOff');
+    let soundOnContainer = document.getElementById('soundOn');
 
     for (let i = 0; i < sounds.length; i++) {
         const sound = sounds[i];
