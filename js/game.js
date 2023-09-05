@@ -41,6 +41,18 @@ function closeKeyboardInformation() {
     document.getElementById('keyboardInformation').classList.add('d-none');
 }
 
+function openFullScreen() {
+    console.log('openFullScreen wird aufgerufen!');
+    const canvas = document.getElementById('canvasContainer');
+    if (canvas.requestFullscreen) {
+        canvas.requestFullscreen()
+    } else if (canvas.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+    }
+}
+
 document.addEventListener('keydown', (e) => {
     if ((e.keyCode == 38)) {
         keyboard.UP = true;

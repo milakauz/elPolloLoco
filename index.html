@@ -42,35 +42,28 @@
         <div id="gameIcons">
             <button onclick="startGame()" id="startGameBtn" class="tooltip">
                 <span class="tooltiptext">start your game!</span>
-
                 <img src="img/10_game_icons/startGame.png" alt="play_startGame">
             </button>
-
             <button class="tooltip" onclick="showKeyboardInformation()">
                 <span class="tooltiptext">keyboard explained!</span>
                 <img src="img/10_game_icons/joyStick.png" alt="joystick_keyExplanation">
             </button>
-
             <button class="tooltip" onclick="showGameInformation()">
                 <span class="tooltiptext">what's up?!</span>
                 <img src="img/10_game_icons/information.png" alt="information">
             </button>
-
             <button class="tooltip" id="soundOff" onclick="mute()">
                 <span class="tooltiptext">turn off sound!</span>
                 <img src="img/10_game_icons/soundOff.png" alt="sound_off">
             </button>
-
             <button id="soundOn" class="tooltip d-none" onclick="unmute()">
                 <span class="tooltiptext">turn on sound!</span>
                 <img src="img/10_game_icons/soundOn.png" alt="sound_on">
             </button>
-
-            <button class="tooltip">
+            <button class="tooltip" onclick="openFullScreen()">
                 <span class="tooltiptext">fullscreen!</span>
                 <img src="img/10_game_icons/fullScreen.png" alt="fullScreen">
             </button>
-
         </div>
 
         <canvas id="canvas" class="d-none" height="480" width="800">
@@ -97,33 +90,33 @@
                 <h1>Keyboard</h1>
                 <p id="keyboardInformation" class="d-none info">
 
-                    <div class="key-explanations">
-                        <span class="circle">
-                            <img src="img/10_game_icons/key_space.png" alt="spacebar">
-                        </span>
-                        <span>jump</span>
-                    </div>
+                <div class="key-explanations">
+                    <span class="circle">
+                        <img src="img/10_game_icons/key_space.png" alt="spacebar">
+                    </span>
+                    <span>jump</span>
+                </div>
 
-                    <div class="key-explanations">
-                        <span class="circle">
-                            <img src="img/10_game_icons/key_arrowLeft.png" alt="arrow left">
-                        </span>
-                        <span>run left</span>
-                    </div>
+                <div class="key-explanations">
+                    <span class="circle">
+                        <img src="img/10_game_icons/key_arrowLeft.png" alt="arrow left">
+                    </span>
+                    <span>run left</span>
+                </div>
 
-                    <div class="key-explanations">
-                        <span class="circle">
-                            <img src="img/10_game_icons/key_arrowRight.png" alt="arrow right">
-                        </span>
-                        <span>run right</span>
-                    </div>
+                <div class="key-explanations">
+                    <span class="circle">
+                        <img src="img/10_game_icons/key_arrowRight.png" alt="arrow right">
+                    </span>
+                    <span>run right</span>
+                </div>
 
-                    <div class="key-explanations">
-                        <span class="circle">
-                            <img src="img/10_game_icons/key_D.png" alt="">
-                        </span>
-                        <span>throw bottles</span>
-                    </div>
+                <div class="key-explanations">
+                    <span class="circle">
+                        <img src="img/10_game_icons/key_D.png" alt="">
+                    </span>
+                    <span>throw bottles</span>
+                </div>
 
                 </p>
             </div>
