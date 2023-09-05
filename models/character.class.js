@@ -4,6 +4,7 @@ class Character extends MovableObject {
     y = 20;
     world;
     speed = 10;
+    dyingAnimation;
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
@@ -63,7 +64,7 @@ class Character extends MovableObject {
     }
 
     animate() {
-        setInterval(() => {
+        let movingCharacter = setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 character_walking_sound.play();
                 this.moveRight();
@@ -84,9 +85,14 @@ class Character extends MovableObject {
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 
-        setInterval(() => {
+        let characterInterval = setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DYING);
+                setTimeout(() => {
+                    console.log('animation beendet!');
+                    clearInterval(characterInterval);
+                }, 1000);
+                // this.y = -25;
             } else if (this.isHurt()) {
                 setTimeout(() => {
                     this.playAnimation(this.IMAGES_HURTING);

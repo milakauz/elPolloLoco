@@ -83,6 +83,7 @@ class World {
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
+            this.checkCharacterEnergy(this.character.energy);
             if (this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.energy > 0) {
                 this.character.hit(1);
                 this.healthBar.setPercentage(this.character.energy)
@@ -96,6 +97,21 @@ class World {
         });
     }
 
+    checkCharacterEnergy(energy) {
+        if (energy == 0) {
+            this.character.isDead();
+            this.removeAllFromMap();
+            showEndScreen('PC');
+        }
+    }
+    removeAllFromMap() {
+        setTimeout(() => {
+            this.level.enemies = [];
+            this.level.coins = [];
+            this.level.bottles = [];
+            this.character = [];
+        }, 1000);
+    }
     checkBottleEnemyCollisions() {
         this.throwableObjects.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
@@ -126,8 +142,8 @@ class World {
 
     removeEndbossFromMap(endboss) {
         setTimeout(() => {
-            console.log('endboss will be removed!');
             this.level.endboss.splice(this.level.endboss.indexOf(endboss), 1);
+            showEndScreen('NPC');
         }, 3200);
     }
 
