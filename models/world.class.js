@@ -95,7 +95,13 @@ class World {
                 }
             }
         });
+        if (this.level.endboss[0].isColliding(this.character) && this.level.endboss[0].energy > 0) {
+            this.character.hit(2);
+            this.healthBar.setPercentage(this.character.energy);
+        }
     }
+
+
 
     checkCharacterEnergy(energy) {
         if (energy == 0) {
@@ -112,6 +118,7 @@ class World {
             this.character = [];
         }, 1000);
     }
+
     checkBottleEnemyCollisions() {
         this.throwableObjects.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
