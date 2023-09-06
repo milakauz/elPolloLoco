@@ -9,6 +9,7 @@ class World {
     bottlesBar = new BottleBar();
     endbossEnergyBar = new EnergyBar();
     throwableObjects = [];
+    checkAllCollisions;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -49,7 +50,7 @@ class World {
     }
 
     run() {
-        setInterval(() => {
+        this.checkAllCollisions = setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
             this.checkCoinCollisions();
@@ -95,7 +96,7 @@ class World {
                 }
             }
         });
-        if (this.level.endboss[0].isColliding(this.character) && this.level.endboss[0].energy > 0) {
+        if (this.character.isColliding(this.level.endboss[0]) && this.level.endboss[0].energy > 0) {
             this.character.hit(2);
             this.healthBar.setPercentage(this.character.energy);
         }
@@ -112,6 +113,7 @@ class World {
     }
     removeAllFromMap() {
         setTimeout(() => {
+            clearInterval(this.checkAllCollisions);
             this.level.enemies = [];
             this.level.coins = [];
             this.level.bottles = [];
@@ -130,7 +132,7 @@ class World {
                     }, 500);
                     endboss.hit(4);
                     this.endbossEnergyBar.setPercentage(endboss.energy)
-                    this.playSound(endboss_hitting_sound);
+                    this.playSound(endboss_hitting);
                     // this.checkEndBossEnergy(endboss, endboss.energy);
                 } else if (bottle.isColliding(endboss) && endboss.energy == 0) {
                     endboss.isDead();
@@ -150,6 +152,7 @@ class World {
     removeEndbossFromMap(endboss) {
         setTimeout(() => {
             this.level.endboss.splice(this.level.endboss.indexOf(endboss), 1);
+            clearInterval(this.checkAllCollisions);
             showEndScreen('NPC');
         }, 3200);
     }
@@ -163,7 +166,7 @@ class World {
             if (this.character.isColliding(coin)) {
                 this.removeCoinOffMap(i);
                 this.addCoinToStatusbar();
-                this.playSound(coin_collecting_sound);
+                this.playSound(coin_collecting);
             }
         });
     }
@@ -173,7 +176,7 @@ class World {
             if (this.character.isColliding(bottle)) {
                 this.removeBottleOffMap(i);
                 this.addBottleToStatusbar();
-                this.playSound(bottle_collecting_sound);
+                this.playSound(bottle_collecting);
             }
         });
     }
