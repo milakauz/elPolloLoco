@@ -1,18 +1,19 @@
-const character_jumping_sound = new Audio('audio/jump.wav');
-const character_walking_sound = new Audio('audio/running.mp3');
-const endboss_hitting_sound = new Audio('./audio/hit_endboss.mp3');
-const bottle_collecting_sound = new Audio('audio/collect_bottle.mp3');
+const bottle_collecting = new Audio('audio/collect_bottle.mp3');
 const bottle_splashing = new Audio('./audio/glass.mp3')
-const coin_collecting_sound = new Audio('audio/collect_coin.mp3');
+const character_jumping = new Audio('audio/jump.wav');
+const character_walking = new Audio('audio/running.mp3');
+const coin_collecting = new Audio('audio/collect_coin.mp3');
+const endboss_hitting = new Audio('./audio/hit_endboss.mp3');
 
 let soundTuning;
 
 let sounds = [
-    character_jumping_sound,
-    character_walking_sound,
-    endboss_hitting_sound,
-    bottle_collecting_sound,
-    coin_collecting_sound
+    bottle_splashing,
+    bottle_collecting,
+    character_jumping,
+    character_walking,
+    coin_collecting,
+    endboss_hitting
 ]
 
 function mute() {
