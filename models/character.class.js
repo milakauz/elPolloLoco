@@ -89,7 +89,6 @@ class Character extends MovableObject {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DYING);
                 setTimeout(() => {
-                    console.log('animation beendet!');
                     clearInterval(characterInterval);
                 }, 1000);
                 // this.y = -25;
