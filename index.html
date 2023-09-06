@@ -51,12 +51,16 @@
                 </button>
             </div>
             <div id="PCDead" class="d-none">
-                <button id="endBtn" onclick="startGame(); cleaningCanvas()">
-                    ¡try again!
+                <button id="endBtn" onclick="reloadGame(); cleanseCanvas()">
+                    ¡play again!
                 </button>
             </div>
         </div>
         <div id="gameIcons">
+            <button onclick="cleanseCanvas(); reloadGame()" id="startAgainBtn" class="tooltip d-none">
+                <span class="tooltiptext">try again!</span>
+                <img src="img/10_game_icons/startGame.png" alt="play_startGame">
+            </button>
             <button onclick="startGame()" id="startGameBtn" class="tooltip">
                 <span class="tooltiptext">start your game!</span>
                 <img src="img/10_game_icons/startGame.png" alt="play_startGame">
