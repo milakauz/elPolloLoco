@@ -1,7 +1,7 @@
 class MovableObject extends drawableObject {
     speed = 0.15;
     speedY = 0;
-    acceleration = 2.5;
+    acceleration = 3.5;
     otherDirection = false;
     energy = 100;
     lastHit = 0;
@@ -45,7 +45,7 @@ class MovableObject extends drawableObject {
         if (this instanceof ThrowableObject) {
             return true;
         } else {
-            return this.y < 157.5;
+            return this.y < 200;
         }
     }
 

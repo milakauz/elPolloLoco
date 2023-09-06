@@ -1,7 +1,7 @@
 class Character extends MovableObject {
-    width = 200;
-    height = 300;
-    y = 20;
+    width = 150;
+    height = 230;
+    y = 210;
     world;
     speed = 10;
     dyingAnimation;
@@ -42,10 +42,10 @@ class Character extends MovableObject {
     ]
 
     offSet = {
-        top: 125,
-        right: 50,
+        top: 95,
+        right: 30,
         bottom: -5,
-        left: 50
+        left: 30
     }
     
     constructor() {
@@ -60,26 +60,26 @@ class Character extends MovableObject {
     }
 
     jump() {
-        this.speedY = 25;
+        this.speedY = 40;
     }
 
     animate() {
         let movingCharacter = setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                character_walking_sound.play();
+                character_walking.play();
                 this.moveRight();
                 this.otherDirection = false;
             }
 
             if (this.world.keyboard.LEFT && this.x > 0) {
-                character_walking_sound.play();
+                character_walking.play();
                 this.moveLeft();
                 this.otherDirection = true;
             }
 
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
-                this.playSound(character_jumping_sound)
+                this.playSound(character_jumping)
             }
 
             this.world.camera_x = -this.x + 100;
@@ -91,7 +91,6 @@ class Character extends MovableObject {
                 setTimeout(() => {
                     clearInterval(characterInterval);
                 }, 1000);
-                // this.y = -25;
             } else if (this.isHurt()) {
                 setTimeout(() => {
                     this.playAnimation(this.IMAGES_HURTING);
@@ -101,7 +100,6 @@ class Character extends MovableObject {
             } else {
 
                 if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                    // Walk animation
                     this.playAnimation(this.IMAGES_WALKING);
                 }
             }
