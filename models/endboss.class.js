@@ -74,7 +74,6 @@ class Endboss extends MovableObject {
                 setTimeout(() => {
                     this.hadFirstContactOver = true;
                 }, 2000);
-                console.log('attacking images playing');
             } else if (!this.isHurt() && !this.isDying) {
                 this.playAnimation(this.IMAGES_WALKING)
             } else if (this.isHurt() && !this.isDying) {
