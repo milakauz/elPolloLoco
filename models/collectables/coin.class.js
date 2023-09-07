@@ -5,8 +5,8 @@ class Coin extends MovableObject {
         bottom: 10,
         left: 15
     }
-    height = 100;
-    width = 100;
+    height = 80;
+    width = 80;
 
     PULSATING_IMAGES = [
         'img/8_coin/coin_1.png',
@@ -25,6 +25,6 @@ class Coin extends MovableObject {
     animate() {
         setInterval(() => {
             this.playAnimation(this.PULSATING_IMAGES);
-        }, 1000 / 2);
+        }, 400);
     }
 }

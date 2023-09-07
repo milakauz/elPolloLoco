@@ -2,7 +2,10 @@ class Endboss extends MovableObject {
     height = 400;
     width = 400;
     y = 65;
+    speed = 0.8;
     isDying = false;
+    hadFirstContact = false;
+    hadFirstContactOver = false;
     energy = 100;
     offSet = {
         top: 20,
@@ -10,6 +13,16 @@ class Endboss extends MovableObject {
         bottom: 15,
         left: 100
     }
+    IMAGES_ATTACKING = [
+        'img/4_enemie_boss_chicken/3_attack/G13.png',
+        'img/4_enemie_boss_chicken/3_attack/G14.png',
+        'img/4_enemie_boss_chicken/3_attack/G15.png',
+        'img/4_enemie_boss_chicken/3_attack/G16.png',
+        'img/4_enemie_boss_chicken/3_attack/G17.png',
+        'img/4_enemie_boss_chicken/3_attack/G18.png',
+        'img/4_enemie_boss_chicken/3_attack/G19.png',
+        'img/4_enemie_boss_chicken/3_attack/G20.png',
+    ]
     IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
         'img/4_enemie_boss_chicken/1_walk/G2.png',
@@ -38,7 +51,8 @@ class Endboss extends MovableObject {
     ]
 
     constructor() {
-        super().loadImages(this.IMAGES_WALKING);
+        super().loadImages(this.IMAGES_ATTACKING);
+        this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_HURTING);
         this.loadImages(this.IMAGES_ALERTING);
         this.loadImages(this.IMAGES_DYING);
@@ -49,11 +63,19 @@ class Endboss extends MovableObject {
 
     animate() {
         let movingEndboss = setInterval(() => {
-            this.moveLeft()
+            if (this.hadFirstContact) {
+                this.moveLeft()
+            }
         }, 1000 / 100);
 
         let endbossInterval = setInterval(() => {
-            if (!this.isHurt() && !this.isDying) {
+            if (this.hadFirstContact && !this.hadFirstContactOver) {
+                this.playAnimation(this.IMAGES_ATTACKING);
+                setTimeout(() => {
+                    this.hadFirstContactOver = true;
+                }, 2000);
+                console.log('attacking images playing');
+            } else if (!this.isHurt() && !this.isDying) {
                 this.playAnimation(this.IMAGES_WALKING)
             } else if (this.isHurt() && !this.isDying) {
                 setTimeout(() => {
@@ -66,7 +88,6 @@ class Endboss extends MovableObject {
             } else if (!this.isHurt() && this.isDying) {
                 setTimeout(() => {
                     clearInxterval(endbossInterval);
-                    console.log('Intervall wird gelöscht');
                 }, 3000);
             }
         }, 200);

@@ -52,11 +52,18 @@ class World {
     run() {
         this.checkAllCollisions = setInterval(() => {
             this.checkCollisions();
+            this.checkFirstContact();
             this.checkThrowObjects();
             this.checkCoinCollisions();
             this.checkBottleCollisions();
             this.checkBottleEnemyCollisions();
         }, 100);
+    }
+
+    checkFirstContact() {
+        if (this.character.x > 1930 && !this.level.endboss[0].hadFirstContact) {
+            this.level.endboss[0].hadFirstContact = true;
+        }
     }
 
     checkThrowObjects() {
