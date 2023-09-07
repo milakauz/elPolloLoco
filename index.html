@@ -8,35 +8,31 @@
     <title>El Pollo Loco</title>
     <!-- <link rel="icon" type="image/jpg" href="img/favicon.png" /> -->
     <link rel="icon" href="./img/favicon.png" alt="https://www.flaticon.com/de/kostenlose-icons/kaktus">
+    <script src="js/sounds.js"></script>
     <script src="models/drawable-object.class.js"></script>
     <script src="models/movable-object.class.js"></script>
+    <script src="models/throwable-object.class.js"></script>
+    <script src="models/keyboard.class.js"></script>
     <script src="models/status-bar.class.js"></script>
     <script src="models/health-bar.class.js"></script>
-    <script src="models/coin-bar.class.js"></script>
     <script src="models/energy-bar-endboss.js"></script>
+    <script src="models/coin-bar.class.js"></script>
     <script src="models/bottle-bar.class.js"></script>
-    <script src="models/world.class.js"></script>
-    <script src="models/character.class.js"></script>
-    <script src="models/chicken.class.js"></script>
-    <script src="models/cloud.class.js"></script>
     <script src="models/background-object.class.js"></script>
-    <script src="models/keyboard.class.js"></script>
-    <script src="models/level.class.js"></script>
-    <script src="models/throwable-object.class.js"></script>
-    <script src="models/endboss.class.js"></script>
-    <script src="js/sounds.js"></script>
+    <script src="models/cloud.class.js"></script>
+    <script src="models/chicken.class.js"></script>
+    <script src="models/character.class.js"></script>
     <script src="models/collectables/coin.class.js"></script>
     <script src="models/collectables/bottle.class.js"></script>
+    <script src="models/endboss.class.js"></script>
+    <script src="models/world.class.js"></script>
+    <script src="models/level.class.js"></script>
     <script src="levels/level1.js"></script>
 </head>
 
-<!-- <body onload="init()"> -->
+<body>
 
-<body onload="init()">
-
-    <!--  c76758 icons  -->
-    <!-- hover icons FFF6F3 -->
-    <!-- cbcdcf icons-background -->
+    <h1 class="main-title">El Pollo Loco</h1>
     <div id="canvasContainer">
         <div id="startScreenContainer"></div>
         <div id="endScreenContainer" class="d-none">
@@ -87,7 +83,7 @@
             </button>
         </div>
 
-        <canvas id="canvas" class="d-none" height="480" width="800">
+        <canvas id="canvas" class="d-none" height="480" width="720">
         </canvas>
 
         <div id="backgroundDialog1" class="d-none" onclick="closeGameInformation()">
@@ -142,10 +138,16 @@
                 </p>
             </div>
         </div>
+
+    </div>
+    <div id="mobileAdvice">
+        <h1>rotate your device</h1>
+        <img src="./img/10_game_icons/rotate.svg" alt="rotation icon">
     </div>
 
 </body>
 
 <script src="js/game.js"></script>
+
 
 </html>
