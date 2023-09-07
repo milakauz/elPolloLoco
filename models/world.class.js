@@ -59,6 +59,7 @@ class World {
             this.checkCoinCollisions();
             this.checkBottleCollisions();
             this.checkBottleEnemyCollisions();
+            this.initiateSound();
         }, 100);
     }
 
@@ -191,7 +192,6 @@ class World {
         });
     }
 
-
     removeCoinOffMap(i) {
         this.level.coins.splice(i, 1);
     }
@@ -212,6 +212,22 @@ class World {
 
     playSound(audio) {
         audio.play();
+    }
+
+    stopSound(audio) {
+        audio.pause();
+    }
+
+    initiateSound() {
+        if (this.character.x > 1800 && this.level.endboss[0].energy > 0) {
+            this.playSound(character_endboss_contact);
+        } else if (this.level.endboss[0].energy == 0) {
+            this.stopSound(character_endboss_contact)
+            this.playSound(character_winning);
+            setTimeout(() => {
+                this.stopSound(character_winning)
+            }, 120000);
+        }
     }
 
 
