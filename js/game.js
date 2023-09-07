@@ -58,9 +58,11 @@ function openFullScreen() {
 function showEndScreen(a) {
     document.getElementById('endScreenContainer').classList.remove('d-none');
     if (a == 'NPC') {
+        document.getElementById('mobileBtns').classList.add('d-none');
         document.getElementById('startAgainBtn').classList.remove('d-none');
         document.getElementById('NPCDead').classList.remove('d-none');
     } else if (a == 'PC') {
+        document.getElementById('mobileBtns').classList.add('d-none');
         document.getElementById('PCDead').classList.remove('d-none');
     }
 }
@@ -72,5 +74,5 @@ function cleanseCanvas() {
 }
 
 function reloadGame() {
-   location.reload();
+    location.reload();
 }
