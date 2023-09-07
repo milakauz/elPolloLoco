@@ -21,7 +21,6 @@ body {
     font-size: 64px;
     letter-spacing: 3px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-    margin-top: 10px;
 }
 
 #canvasContainer {
@@ -30,7 +29,6 @@ body {
     position: relative;
     width: 720px;
     height: 480px;
-    margin-top: 50px;
 }
 
 .d-none {
@@ -105,8 +103,7 @@ button:hover {
     height: 480px;
     width: 800px;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.3);
-    /* background-color: rgba(247, 194, 116, 0.8); */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
 }
 
 #backgroundDialog1 h1,
@@ -170,8 +167,9 @@ button img {
 
 #startScreenContainer {
     background-image: url('img/9_intro_outro_screens/start/startscreen_2.png');
-    background-position: center;
-    background-size: cover;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: contain;
     width: 100%;
     height: 100%;
 }
@@ -194,13 +192,26 @@ button img {
 }
 
 #NPCDead h1 {
+    font-size: 80px;
+    letter-spacing: 8px;
     text-transform: uppercase;
 }
 
+#NPCDead h1, 
 #NPCDead span {
+    background-image: linear-gradient(to bottom, #ffdf00, #ffa602);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 3px #9b401d;
+    color: transparent;
     text-align: center;
-    font-size: 32px;
+    letter-spacing: 2px;
 }
+
+#NPCDead span {
+    font-size: 48px;
+}
+
 
 #PCDead {
     background-image: url('./img/9_intro_outro_screens/game_over/game over!.png');
@@ -212,6 +223,7 @@ button img {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+    padding-bottom: 30px;
 }
 
 #nextLevelBtn,
