@@ -33,7 +33,9 @@ class World {
         this.addToMap(this.healthBar);
         this.addToMap(this.coinsBar);
         this.addToMap(this.bottlesBar);
-        this.addToMap(this.endbossEnergyBar);
+        if (this.character.x > 1700) {
+            this.addToMap(this.endbossEnergyBar);
+        }
         this.ctx.translate(this.camera_x, 0); //forwards
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
@@ -65,6 +67,7 @@ class World {
             this.level.endboss[0].hadFirstContact = true;
         }
     }
+
 
     checkThrowObjects() {
         if (this.keyboard.D) {
