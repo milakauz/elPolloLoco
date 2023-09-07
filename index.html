@@ -55,15 +55,15 @@
         <div id="gameIcons">
             <button onclick="cleanseCanvas(); reloadGame()" id="startAgainBtn" class="tooltip d-none">
                 <span class="tooltiptext">¡play again!</span>
-                <img src="img/10_game_icons/startGame.png" alt="play_startGame">
+                <img src="img/10_game_icons/startGame.png" alt="play & startGame">
             </button>
             <button onclick="startGame()" id="startGameBtn" class="tooltip">
                 <span class="tooltiptext">start your game!</span>
-                <img src="img/10_game_icons/startGame.png" alt="play_startGame">
+                <img src="img/10_game_icons/startGame.png" alt="play & startGame">
             </button>
             <button class="tooltip" onclick="showKeyboardInformation()">
                 <span class="tooltiptext">keyboard explained!</span>
-                <img src="img/10_game_icons/joyStick.png" alt="joystick_keyExplanation">
+                <img src="img/10_game_icons/joyStick.png" alt="joystick">
             </button>
             <button class="tooltip" onclick="showGameInformation()">
                 <span class="tooltiptext">what's up?!</span>
@@ -71,11 +71,11 @@
             </button>
             <button class="tooltip" id="soundOff" onclick="mute()">
                 <span class="tooltiptext">turn off sound!</span>
-                <img src="img/10_game_icons/soundOff.png" alt="sound_off">
+                <img src="img/10_game_icons/soundOff.png" alt="sound off">
             </button>
             <button id="soundOn" class="tooltip d-none" onclick="unmute()">
                 <span class="tooltiptext">turn on sound!</span>
-                <img src="img/10_game_icons/soundOn.png" alt="sound_on">
+                <img src="img/10_game_icons/soundOn.png" alt="sound on">
             </button>
             <button class="tooltip" onclick="openFullScreen()">
                 <span class="tooltiptext">fullscreen!</span>
@@ -139,7 +139,27 @@
             </div>
         </div>
 
+        <div id="mobileBtns">
+            <div class="btns-left">
+                <button id="mobileLeft">
+                    <img src="img/10_game_icons/mobile_left.png" alt="move left">
+                </button>
+                <button id="mobileRight">
+                    <img src="img/10_game_icons/mobile_right.png" alt="move right">
+                </button>
+            </div>
+            <div class="btns-right">
+                <button id="mobileJump">
+                    <img src="img/10_game_icons/mobile_up.png" alt="jump">
+                </button>
+                <button id="mobileThrow">
+                    <img src="img/10_game_icons/mobile_throw.png" alt="throw">
+                </button>
+            </div>
+        </div>
+
     </div>
+
     <div id="mobileAdvice">
         <h1>rotate your device</h1>
         <img src="./img/10_game_icons/rotate.svg" alt="rotation icon">

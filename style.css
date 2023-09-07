@@ -28,7 +28,7 @@ body {
     display: flex;
     justify-content: center;
     position: relative;
-    width: 800px;
+    width: 720px;
     height: 480px;
     margin-top: 50px;
 }
@@ -223,11 +223,42 @@ button img {
     margin-top: 5%;
 }
 
+#mobileBtns {
+    display: none;
+}
+
 #mobileAdvice {
     display: none;
 }
 
 @media only screen and (max-width: 720px) {
+    .main-title {
+        display: none;
+    }
+
+    #canvasContainer {
+        margin-top: unset;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    #mobileBtns {
+        position: absolute;
+        bottom: 32;
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 4px;
+        /* padding: 0 16px 8px 16px; */
+    }
+
+    #mobileBtns div {
+        display: flex;
+        gap: 10px;
+        padding: 0px 16px 16px 16px;
+    }
+
     .main-title {
         display: none;
     }
@@ -238,6 +269,34 @@ button img {
 }
 
 @media only screen and (max-height: 480px) {
+    .main-title {
+        display: none;
+    }
+    
+    #canvasContainer {
+        margin-top: unset;
+        height: 100vh;
+        width: 100vw;
+    } 
+
+    #mobileBtns {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 4px;
+        /* padding: 0 16px 8px 16px; */
+    }
+
+    #mobileBtns div {
+        display: flex;
+        gap: 10px;
+        padding: 0px 16px 16px 16px;
+
+    }
+
     .main-title {
         display: none;
     }
