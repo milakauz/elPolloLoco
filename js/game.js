@@ -16,6 +16,7 @@ function startGame() {
     startScreen.classList.add('d-none');
     startBtn.classList.add('d-none');
     canvas.classList.remove('d-none');
+    mobileBtns.classList.remove('d-none');
     init();
     world = new World(canvas, keyboard);
 }
