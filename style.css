@@ -248,7 +248,7 @@ button img {
 }
 
 #mobileBtns {
-    display: none;
+    display: none !important;
 }
 
 #mobileAdvice {
