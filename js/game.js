@@ -8,7 +8,6 @@ let keyboard = new Keyboard();
 let infoList = document.querySelectorAll('info');
 
 function init() {
-    // initLevel();
     getSoundStorage();
 }
 
@@ -17,8 +16,8 @@ function startGame() {
     startBtn.classList.add('d-none');
     canvas.classList.remove('d-none');
     mobileBtns.classList.remove('d-none');
-    init();
     world = new World(canvas, keyboard);
+    initLevel();
 }
 
 function showGameInformation() {
