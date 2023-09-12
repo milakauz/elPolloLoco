@@ -28,22 +28,22 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
-        this.addObjectsToMap(this.level.backgroundObjects);
+         this.addObjectsToMap(this.level.backgroundObjects);
         this.ctx.translate(-this.camera_x, 0); // backwards
-        this.addToMap(this.healthBar);
-        this.addToMap(this.coinsBar);
-        this.addToMap(this.bottlesBar);
-        if (this.character.x > 1700) {
-            this.addToMap(this.endbossEnergyBar);
-        }
+         this.addToMap(this.healthBar);
+         this.addToMap(this.coinsBar);
+         this.addToMap(this.bottlesBar);
+         if (this.character.x > 1700) {
+             this.addToMap(this.endbossEnergyBar);
+         }
         this.ctx.translate(this.camera_x, 0); //forwards
-        this.addToMap(this.character);
-        this.addObjectsToMap(this.level.enemies);
+         this.addToMap(this.character);
+         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.endboss);
-        this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.level.coins);
-        this.addObjectsToMap(this.level.bottles);
-        this.addObjectsToMap(this.throwableObjects);
+         this.addObjectsToMap(this.level.clouds);
+         this.addObjectsToMap(this.level.coins);
+         this.addObjectsToMap(this.level.bottles);
+         this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);
         let self = this;
         requestAnimationFrame(function () {

@@ -11,13 +11,13 @@ function init() {
     getSoundStorage();
 }
 
-function startGame() {
+async function startGame() {
+    await initLevel();
     startScreen.classList.add('d-none');
     startBtn.classList.add('d-none');
     canvas.classList.remove('d-none');
     mobileBtns.classList.remove('d-none');
     world = new World(canvas, keyboard);
-    initLevel();
 }
 
 function showGameInformation() {
