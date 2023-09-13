@@ -21,9 +21,6 @@ let sounds = [
 ]
 
 function mute() {
-    let soundOffContainer = document.getElementById('soundOff');
-    let soundOnContainer = document.getElementById('soundOn');
-
     for (let i = 0; i < sounds.length; i++) {
         const sound = sounds[i];
         if (sound.muted == false) {
@@ -32,14 +29,24 @@ function mute() {
     }
     soundTuning = 'muted';
     saveSoundStorage();
+    changeIconsToMuted();
+}
+
+function changeIconsToMuted() {
+    let soundOffContainer = document.getElementById('soundOff');
+    let soundOnContainer = document.getElementById('soundOn');
     soundOffContainer.classList.add('d-none');
     soundOnContainer.classList.remove('d-none');
 }
 
-function unmute() {
+function changeIconsToUnmuted() {
     let soundOffContainer = document.getElementById('soundOff');
     let soundOnContainer = document.getElementById('soundOn');
+    soundOnContainer.classList.add('d-none');
+    soundOffContainer.classList.remove('d-none');
+}
 
+function unmute() {
     for (let i = 0; i < sounds.length; i++) {
         const sound = sounds[i];
         if (sound.muted == true) {
@@ -47,8 +54,7 @@ function unmute() {
         }
         soundTuning = 'unmuted';
         saveSoundStorage();
-        soundOnContainer.classList.add('d-none');
-        soundOffContainer.classList.remove('d-none');
+        changeIconsToUnmuted();
     }
 }
 
