@@ -5,6 +5,7 @@ class MovableObject extends drawableObject {
     otherDirection = false;
     energy = 100;
     lastHit = 0;
+    intervalIDs = [];
 
     drawFrame(ctx) {
         if (this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof Coin || this instanceof Bottle) {
@@ -14,6 +15,12 @@ class MovableObject extends drawableObject {
             ctx.rect(this.x + this.offSet.left, this.y + this.offSet.top, this.width - this.offSet.right - this.offSet.left, this.height - this.offSet.top - this.offSet.bottom);
             ctx.stroke();
         }
+    }
+
+    setStoppableInterval(fn, time) {
+        let id = setInterval(fn, time);
+        this.intervalIDs.push(id); // mit forEach Schleife iterieren
+        // setStoppableInverval(moveRight, 600);
     }
 
     moveRight() {
