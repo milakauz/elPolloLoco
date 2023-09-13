@@ -5,16 +5,7 @@ class MovableObject extends drawableObject {
     otherDirection = false;
     energy = 100;
     lastHit = 0;
-
-    drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof Coin || this instanceof Bottle) {
-            ctx.beginPath();
-            ctx.lineWidth = '3';
-            ctx.strokeStyle = 'black';
-            ctx.rect(this.x + this.offSet.left, this.y + this.offSet.top, this.width - this.offSet.right - this.offSet.left, this.height - this.offSet.top - this.offSet.bottom);
-            ctx.stroke();
-        }
-    }
+    // intervalIDs;
 
     moveRight() {
         this.x += this.speed;
@@ -23,6 +14,11 @@ class MovableObject extends drawableObject {
     moveLeft() {
         this.x -= this.speed;
     }
+
+    // setStoppableInterval(fn, time) {
+    //     let id = setInterval(fn,time);
+    //     intervalIDs.push(id);
+    // }
 
     playAnimation(images) {
         let i = this.currentImage % images.length;

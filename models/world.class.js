@@ -28,22 +28,22 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
-         this.addObjectsToMap(this.level.backgroundObjects);
+        this.addObjectsToMap(this.level.backgroundObjects);
         this.ctx.translate(-this.camera_x, 0); // backwards
-         this.addToMap(this.healthBar);
-         this.addToMap(this.coinsBar);
-         this.addToMap(this.bottlesBar);
-         if (this.character.x > 1700) {
-             this.addToMap(this.endbossEnergyBar);
-         }
+        this.addToMap(this.healthBar);
+        this.addToMap(this.coinsBar);
+        this.addToMap(this.bottlesBar);
+        if (this.character.x > 1700) {
+            this.addToMap(this.endbossEnergyBar);
+        }
         this.ctx.translate(this.camera_x, 0); //forwards
-         this.addToMap(this.character);
-         this.addObjectsToMap(this.level.enemies);
+        this.addToMap(this.character);
+        this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.endboss);
-         this.addObjectsToMap(this.level.clouds);
-         this.addObjectsToMap(this.level.coins);
-         this.addObjectsToMap(this.level.bottles);
-         this.addObjectsToMap(this.throwableObjects);
+        this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.bottles);
+        this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);
         let self = this;
         requestAnimationFrame(function () {
@@ -137,22 +137,33 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
                 if (bottle.isColliding(endboss) && !endboss.isDying && !bottle.isSplashed) {
-                    this.playSound(bottle_splashing);
-                    bottle.isSplashed = true;
-                    setTimeout(() => {
-                        this.deleteBottleFromArray(bottle);
-                    }, 500);
-                    endboss.hit(4);
-                    this.endbossEnergyBar.setPercentage(endboss.energy)
-                    this.playSound(endboss_hitting);
-                    // this.checkEndBossEnergy(endboss, endboss.energy);
+                    this.bottleSplashingActions(bottle);
+                    this.endbossHittingActions(endboss);
                 } else if (bottle.isColliding(endboss) && endboss.energy == 0) {
-                    endboss.isDead();
-                    endboss.isDying = true;
-                    this.removeEndbossFromMap(endboss);
+                    this.endbossDyingActions(endboss);
                 }
             });
         });
+    }
+
+    bottleSplashingActions(bottle) {
+        this.playSound(bottle_splashing);
+        bottle.isSplashed = true;
+        setTimeout(() => {
+            this.deleteBottleFromArray(this.throwableObjects.indexOf(bottle));
+        }, 500);
+    }
+
+    endbossHittingActions(endboss) {
+        endboss.hit(4);
+        this.endbossEnergyBar.setPercentage(endboss.energy)
+        this.playSound(endboss_hitting);
+    }
+
+    endbossDyingActions(endboss) {
+        endboss.isDead();
+        endboss.isDying = true;
+        this.removeEndbossFromMap(endboss);
     }
 
     removeEnemyfromMap(obj) {
@@ -242,7 +253,6 @@ class World {
         if (mo.otherDirection) {
             this.flipImage(mo);
         }
-        mo.drawFrame(this.ctx);
         mo.draw(this.ctx);
         if (mo.otherDirection) {
             this.flipImageBack(mo);
