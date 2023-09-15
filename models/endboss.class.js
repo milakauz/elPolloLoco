@@ -60,7 +60,6 @@ class Endboss extends MovableObject {
 
         this.x = 2400;
         this.animate();
-        // this.playFightingMusic();
     }
 
     animate() {
