@@ -1,7 +1,6 @@
 class ThrowableObject extends MovableObject {
     speedY = 30;
     speedX = 20;
-    // only for calculating collisions. otherwise console.error (offSet.left is not defined)
     offSet = {
         top: 0,
         right: 0,

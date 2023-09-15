@@ -114,8 +114,6 @@ class World {
         }
     }
 
-
-
     checkCharacterEnergy(energy) {
         if (energy == 0) {
             this.character.isDead();
@@ -123,6 +121,7 @@ class World {
             showEndScreen('PC');
         }
     }
+
     removeAllFromMap() {
         setTimeout(() => {
             clearInterval(this.checkAllCollisions);

@@ -5,7 +5,6 @@ class MovableObject extends drawableObject {
     otherDirection = false;
     energy = 100;
     lastHit = 0;
-    // intervalIDs;
 
     moveRight() {
         this.x += this.speed;
@@ -14,11 +13,6 @@ class MovableObject extends drawableObject {
     moveLeft() {
         this.x -= this.speed;
     }
-
-    // setStoppableInterval(fn, time) {
-    //     let id = setInterval(fn,time);
-    //     intervalIDs.push(id);
-    // }
 
     playAnimation(images) {
         let i = this.currentImage % images.length;
