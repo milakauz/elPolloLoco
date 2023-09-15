@@ -12,12 +12,24 @@ function init() {
 }
 
 async function startGame() {
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    if (checkDeviceSize(w, h)) {
+        mobileBtns.classList.remove('d-none');
+        document.getElementById('canvasContainer').style.width = 'unset';
+        document.getElementById('canvasContainer').style.height = '400px';
+
+    }
+    console.log(w, h);
     await initLevel();
     startScreen.classList.add('d-none');
     startBtn.classList.add('d-none');
     canvas.classList.remove('d-none');
-    mobileBtns.classList.remove('d-none');
     world = new World(canvas, keyboard);
+}
+
+function checkDeviceSize(w, h) {
+    return w >= 780 && h >= 400;
 }
 
 function showGameInformation() {
