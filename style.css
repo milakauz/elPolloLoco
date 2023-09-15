@@ -36,6 +36,8 @@ body {
 
 canvas {
     display: block;
+    /* height: 480px;
+    width: 720px; */
 }
 
 #gameIcons {
@@ -247,17 +249,27 @@ button img {
     margin-top: 5%;
 }
 
-#mobileBtns {
+/* #mobileBtns {
     display: none !important;
-}
+} */
 
 #mobileAdvice {
     display: none;
 }
 
-@media only screen and (max-width: 920px) {
+@media only screen and (max-width: 879px) {
+
+    #startScreenContainer,
+    #gameIcons,
     .main-title {
         display: none;
+    }
+
+    #mobileAdvice {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
     }
 
     #NPCDead {
@@ -278,7 +290,7 @@ button img {
 
     #mobileBtns {
         position: absolute;
-        bottom: 32;
+        /* bottom: 32; */
         width: 80%;
         display: flex;
         flex-direction: row;
@@ -296,13 +308,70 @@ button img {
         display: none;
     }
 
-    canvas {
-        width: 100%;
+    #canvas {
+        height: 400px;
     }
 }
 
 @media only screen and (max-height: 480px) {
+    #canvas {
+        height: 400px;
+    }
+
     .main-title {
+        display: none
+    }
+
+    #endscreenContainer {
+        width: 720px;
+        height: 400px;
+    }
+
+    #PCDead,
+    #startScreenContainer {
+        height: 400px;
+    }
+
+    #NPCDead {
+        height: 400px;
+        gap: 32px;
+        margin: 32px;
+    }
+
+    #NPCDead h1 {
+        font-size: 60px;
+    }
+
+    #NPCDead span {
+        font-size: 32px;
+    }
+
+    #mobileBtns {
+        display: flex;
+        justify-content: space-between;
+        bottom: 0;
+        width: 100%;
+        position: absolute;
+        /* gap: 4px; */
+    }
+
+    .btns-left,
+    .btns-right {
+        display: flex;
+        gap: 8px;
+    }
+}
+
+@media only screen and (max-height: 400px) {
+    #mobileAdvice {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #startScreenContainer,
+    #gameIcons {
         display: none;
     }
 
@@ -339,17 +408,19 @@ button img {
         display: none;
     }
 
-    canvas {
+    /* #canvas {
         height: 100vh;
-    }
+    } */
 }
 
-/* big screen */ 
+/* big screen */
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1000px) {
     body {
         background-size: unset;
+        height: 100vh;
     }
+
     #NPCDead {
         margin: 110px;
     }
