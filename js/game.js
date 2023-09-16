@@ -14,11 +14,8 @@ function init() {
 async function startGame() {
     let w = window.innerWidth;
     let h = window.innerHeight;
-    if (checkDeviceSize(w, h)) {
-        mobileBtns.classList.remove('d-none');
-        document.getElementById('canvasContainer').style.width = 'unset';
-        document.getElementById('canvasContainer').style.height = '400px';
-
+    if (checkDeviceWidth(w, h)) {
+        adjustForDevice(h);
     }
     console.log(w, h);
     await initLevel();
@@ -28,8 +25,21 @@ async function startGame() {
     world = new World(canvas, keyboard);
 }
 
-function checkDeviceSize(w, h) {
-    return w >= 780 && h >= 400;
+function checkDeviceWidth(w, h) {
+    return w >= 500;
+}
+
+function adjustForDevice(height) {
+    mobileBtns.classList.remove('d-none');
+    document.getElementById('canvasContainer').style.width = 'unset';
+    let canvascontainer = document.getElementById('canvasContainer');
+    if (height >= 400) {
+        canvascontainer.style.height = '400px';
+    } else if (height >= 374) {
+        canvascontainer.style.height = '360px';
+    } else if (height >= 349) {
+        canvascontainer.style.height = '335px';
+    }
 }
 
 function showGameInformation() {
