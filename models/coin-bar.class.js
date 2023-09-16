@@ -17,6 +17,9 @@ class CoinBar extends StatusBar {
         this.y = 100;
     }
 
+    /**
+     * Updating Coinbar after collisions with coins.
+     */
     updateBar() {
         let imagePath = this.IMAGES[this.resolveImageIndexCollectables(this.collectedCoins)];
         this.img = this.imageCache[imagePath];

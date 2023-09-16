@@ -28,6 +28,9 @@ class Chicken extends MovableObject {
         this.animate()
     }
 
+    /**
+     * Animation intervals for moving and dying chicken.
+     */
     animate() {
         let movingChicken = setInterval(() => {
             this.moveLeft();
@@ -43,6 +46,9 @@ class Chicken extends MovableObject {
         }, 200);
     }
 
+    /**
+     * Setting variable isDead to true. Chicken is removed from Map afterwards.
+     */
     dies() {
         if (!this.isDead) {
             this.isDead = true;

@@ -62,6 +62,10 @@ class Endboss extends MovableObject {
         this.animate();
     }
 
+
+    /**
+     * Animation function setting intervals for endboss according to conditions like hurt.
+     */
     animate() {
         let movingEndboss = setInterval(() => {
             if (this.hadFirstContact) {

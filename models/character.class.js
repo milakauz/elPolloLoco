@@ -88,56 +88,104 @@ class Character extends MovableObject {
         this.speedY = 40;
     }
 
+
+    /**
+     * Checking if character is not played for idle animation.
+     * @returns {boolean}
+     */
     hasNoActions() {
         return !this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.SPACE && !this.world.keyboard.D;
     }
 
+    /**
+     * Animation for short idling.
+     */
     isChilling() {
         this.playAnimation(this.IMAGES_IDLING);
         this.lastAction += 100;
     }
 
+    /**
+     * Animation for long idling.
+     */
     isSleeping() {
         this.playAnimation(this.IMAGES_IDLING_LONG);
         this.lastAction += 100;
     }
 
+    /**
+     * Resetting last action for character to be idling again if not played.
+     */
     resetLastAction() {
         this.lastAction = 0;
     }
 
+    /**
+     * Function for playing audio.
+     *
+     * @param {*} audio
+     */
     playSound(audio) {
         audio.play(audio);
     }
 
+    /**
+     * Checking if character is able to be moving right.
+     * @param {keyboard_Right, level_end_x}
+     * @returns {boolean}
+     */
     canMoveRight() {
         return this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x;
     }
 
+    /**
+     * Moving character to the right.
+     */
     moveRight() {
         character_walking.play();
         super.moveRight();
         this.otherDirection = false;
     }
 
+    /**
+     * Checking if character is able to be moving left.
+     * @param {keyboard_LEFT, character.x}
+     * @returns {boolean}
+     */
     canMoveLeft() {
         return this.world.keyboard.LEFT && this.x > 0;
     }
 
+    /**
+     * Moving character to the left.
+     */
     moveLeft() {
         character_walking.play();
         super.moveLeft();
         this.otherDirection = true;
     }
 
+    /**
+     * Checking if character can jump.
+     * @param {keyboard_SPACE, !chracter.isAboveGround}
+     * @returns {boolean}
+     */
     canJump() {
         return this.world.keyboard.SPACE && !this.isAboveGround();
     }
 
+    /**
+     * Checking if character should be walking.
+     * @param {keyboard_RIGHT, keyboard_LEFT}
+     * @returns {*boolean}
+     */
     isWalking() {
         return this.world.keyboard.RIGHT || this.world.keyboard.LEFT;
     }
 
+    /**
+     * Setting Interval for moving character.
+     */
     setMovingInterval() {
         setInterval(() => {
             if (this.canMoveRight()) {
@@ -159,6 +207,9 @@ class Character extends MovableObject {
         }, 1000 / 60);
     }
 
+    /**
+     * Setting Interval for playing animations.
+     */
     setLivingInterval() {
         setInterval(() => {
             if (this.isHurt()) {
@@ -175,6 +226,9 @@ class Character extends MovableObject {
         }, 50);
     }
 
+    /**
+     * Checking actions according to last action time for playing idling animation.
+     */
     checkActions() {
         setInterval(() => {
             if (this.hasNoActions() && this.lastAction <= 3000)
@@ -184,8 +238,10 @@ class Character extends MovableObject {
         }, 200);
     }
 
+    /**
+     * Function initiating all intervals for playing animation. 
+     */
     animate() {
-        // this.setStoppableInterval(this.setMovingInterval, 100)
         this.setMovingInterval();
         this.setLivingInterval();
         this.checkActions();

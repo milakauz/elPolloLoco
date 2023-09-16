@@ -21,6 +21,9 @@ class MovableObject extends drawableObject {
         this.currentImage++;
     }
 
+    /**
+     * Function for applying gravity for y coordinates when character is jumping.
+     */
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -31,6 +34,12 @@ class MovableObject extends drawableObject {
         }, 1000 / 25);
     }
 
+    /**
+     * Checking if object is above ground for throwing animation of bottles or jumping animation for character.
+     * @date 9/16/2023 - 10:01:33 AM
+     *
+     * @returns {boolean}
+     */
     isAboveGround() {
         if (this instanceof ThrowableObject) {
             return true;
@@ -39,6 +48,11 @@ class MovableObject extends drawableObject {
         }
     }
 
+    /**
+     * Initiating all functions which are checking if character is colliding with chickens, bottles, coins or endboss.
+     * @param {*} obj
+     * @returns {boolean}
+     */
     isColliding(obj) {
         return (
             this.leftColliding(obj) &&
@@ -48,7 +62,11 @@ class MovableObject extends drawableObject {
         );
     }
 
-    // bottom edge of this is bigger than upper edge of obj
+    /**
+     * Checking if this is colliding with object from the bottom.
+     * @param {*} obj
+     * @returns {boolean}
+     */
     bottomColliding(obj) {
         return (
             this.y + this.height - this.offSet.bottom >
@@ -56,7 +74,11 @@ class MovableObject extends drawableObject {
         );
     }
 
-    // right corner of this is bigger than left corner of obj
+    /**
+     * Checking if this is colliding with object from the right side.
+     * @param {*} obj
+     * @returns {boolean}
+     */
     rightColliding(obj) {
         return (
             this.x + this.width - this.offSet.right >
@@ -64,7 +86,12 @@ class MovableObject extends drawableObject {
         );
     }
 
-    // left corner of this is smaller than right corner of obj
+
+    /**
+     * Checking if this is colliding with object from the left side.
+     * @param {*} obj
+     * @returns {boolean}
+     */
     leftColliding(obj) {
         return (
             this.x + this.offSet.left <
@@ -72,7 +99,11 @@ class MovableObject extends drawableObject {
         );
     }
 
-    // upper edge of this is smaller than lower edge of obj
+    /**
+     * Checking if this is colliding with object from the top side.
+     * @param {*} obj
+     * @returns {boolean}
+     */
     topColliding(obj) {
         return (
             this.y + this.offSet.top <
@@ -80,7 +111,11 @@ class MovableObject extends drawableObject {
         );
     }
 
-    // endboss soll langsamer Energie verlieren als Character, deswegen x
+    
+    /**
+     * Function for setting energy after movable object (x) is hit. 
+     * @param {*} x
+     */
     hit(x) {
         this.energy -= x * 5;
         this.isHurt();
@@ -91,12 +126,25 @@ class MovableObject extends drawableObject {
         }
     }
 
+
+    /**
+     * Storing time stamp of last hit and checking if lastHit was within the last quarter of a second.
+     * @date 9/16/2023 - 10:05:53 AM
+     *
+     * @returns {boolean}
+     */
     isHurt() {
         let difference = new Date().getTime() - this.lastHit; // in ms
         difference = difference / 1000; // in s
         return difference < 0.25;
     }
 
+
+
+    /**
+     * Setting movable object energy to 0.  
+     * @returns {boolean}
+     */
     isDead() {
         return this.energy == 0;
     }

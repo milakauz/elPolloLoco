@@ -11,13 +11,14 @@ function init() {
     getSoundStorage();
 }
 
+/**
+ * Function for initializing level and setting world for game to be started.
+ * 
+ * @async
+ * @returns {*}
+ */
 async function startGame() {
-    let w = window.innerWidth;
-    let h = window.innerHeight;
-    if (checkDeviceWidth(w, h)) {
-        adjustForDevice(h);
-    }
-    console.log(w, h);
+    checkResponsive();
     await initLevel();
     startScreen.classList.add('d-none');
     startBtn.classList.add('d-none');
@@ -25,12 +26,46 @@ async function startGame() {
     world = new World(canvas, keyboard);
 }
 
-function checkDeviceWidth(w, h) {
+
+/**
+ * Checking if responsive design is neede according to height and width of window.
+ */
+function checkResponsive() {
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    if (checkDeviceWidth(w)) {
+        adjustForDevice(h);
+        showMobileButtons(w);
+    }
+}
+
+
+/**
+ * Function for cheking if mobile buttons should be shown.
+ * @param {*} w
+ */
+function showMobileButtons(w) {
+    if (w <= 900) {
+        mobileBtns.classList.remove('d-none');
+    }
+}
+
+
+/**
+ * Cheking device width.
+ * @param {*} w
+ * @returns {boolean}
+ */
+function checkDeviceWidth(w) {
     return w >= 500;
 }
 
+
+/**
+ * Adjusting canvas height according to height of window.
+ * @param {*} height
+ */
 function adjustForDevice(height) {
-    mobileBtns.classList.remove('d-none');
     document.getElementById('canvasContainer').style.width = 'unset';
     let canvascontainer = document.getElementById('canvasContainer');
     if (height >= 400) {
@@ -42,11 +77,19 @@ function adjustForDevice(height) {
     }
 }
 
+
+/**
+ * Opening DOM element for showing game informations.
+ */
 function showGameInformation() {
     background.classList.remove('d-none');
     document.getElementById('gameInformation').classList.remove('d-none');
 }
 
+
+/**
+ * Closing DOM element which shows game information.
+ */
 function closeGameInformation() {
     background.classList.add('d-none');
     for (let i = 0; i < infoList.length; i++) {
@@ -55,16 +98,27 @@ function closeGameInformation() {
     }
 }
 
+
+/**
+ *  Opening DOM element for showing keyboard informations.
+ */
 function showKeyboardInformation() {
     background2.classList.remove('d-none');
     document.getElementById('keyboardInformation').classList.remove('d-none');
 }
 
+/**
+ *  Closing DOM element which shows keyboard informations.
+ */
 function closeKeyboardInformation() {
     background2.classList.add('d-none');
     document.getElementById('keyboardInformation').classList.add('d-none');
 }
 
+
+/**
+ * Opening full screen for different browsers.
+ */
 function openFullScreen() {
     console.log('openFullScreen wird aufgerufen!');
     const canvas = document.getElementById('canvasContainer');
@@ -77,6 +131,11 @@ function openFullScreen() {
     }
 }
 
+
+/**
+ * Showding endscreen according to which object is dead. 
+ * @param {*} a
+ */
 function showEndScreen(a) {
     document.getElementById('endScreenContainer').classList.remove('d-none');
     if (a == 'NPC') {
@@ -89,12 +148,20 @@ function showEndScreen(a) {
     }
 }
 
+
+/**
+ * Removing all DOM elements from endscreen to reload Game.
+ */
 function cleanseCanvas() {
     document.getElementById('endScreenContainer').classList.add('d-none');
     document.getElementById('PCDead').classList.add('d-none');
     document.getElementById('endBtn').classList.add('d-none');
 }
 
+
+/**
+ * Reloading game for it to be played again.
+ */
 function reloadGame() {
     location.reload();
 }

@@ -19,7 +19,6 @@ let sounds = [
     endboss_hitting
 ]
 
-/* */
 /**
  * Muting Sounds.
  */

@@ -35,6 +35,9 @@ class ThrowableObject extends MovableObject {
         this.animate();
     }
 
+    /**
+     * Function for throwing bottles.
+     */
     throw() {
         this.applyGravity();
         this.animate();
@@ -43,6 +46,10 @@ class ThrowableObject extends MovableObject {
         }, 25);
     }
 
+
+    /**
+     * Function for animating thrown bottles.
+     */
     animate() {
         setInterval(() => {
             if (!this.isSplashed) {
