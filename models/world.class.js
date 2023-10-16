@@ -90,9 +90,8 @@ class World {
     checkThrowObjects() {
         if (this.keyboard.D) {
             if (this.checkBottlesToThrow()) {
+                this.throwBottle();
                 this.character.resetLastAction();
-                let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
-                this.throwableObjects.push(bottle);
                 this.removeBottleFromCollection();
             }
         }
@@ -108,6 +107,11 @@ class World {
         } else {
             return true;
         }
+    }
+
+    throwBottle() {
+        let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100, true);
+        this.throwableObjects.push(bottle);
     }
 
 
@@ -130,7 +134,7 @@ class World {
             if (this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.energy > 0) {
                 this.character.hit(1);
                 this.healthBar.setPercentage(this.character.energy)
-            } else if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+            } else if (this.character.isColliding(enemy)) {
                 enemy.dies();
                 enemy.energy--;
                 if (enemy.energy === 0) {
@@ -359,12 +363,22 @@ class World {
         return this.level.endboss[0].energy > 0
     }
 
+
+    /**
+     * Adding objects to Map.
+     * @param {*} objects
+     */
     addObjectsToMap(objects) {
         objects.forEach(o => {
             this.addToMap(o);
         })
     }
 
+
+    /**
+     * Adding object to map.
+     * @param {*} mo
+     */
     addToMap(mo) {
         if (mo.otherDirection) {
             this.flipImage(mo);
@@ -375,6 +389,11 @@ class World {
         }
     }
 
+
+    /**
+     * Flipping image of movable object.
+     * @param {*} mo
+     */
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
@@ -382,6 +401,11 @@ class World {
         mo.x = mo.x * -1;
     }
 
+
+    /**
+     * Flipping image back to starting direction.
+     * @param {*} mo
+     */
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();

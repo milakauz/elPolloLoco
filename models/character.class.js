@@ -216,14 +216,18 @@ class Character extends MovableObject {
                 setTimeout(() => {
                     this.playAnimation(this.IMAGES_HURTING);
                 }, 100);
-            } else if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_JUMPING);
             } else if (this.isWalking()) {
                 this.playAnimation(this.IMAGES_WALKING);
             } else if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DYING);
             }
         }, 50);
+
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.playAnimation(this.IMAGES_JUMPING)
+            }
+        }, 250);
     }
 
     /**
