@@ -293,7 +293,7 @@ button img {
     }
 
     #NPCDead {
-        margin: 15px;
+        margin: 10px;
     }
 
     #canvasContainer {
@@ -358,8 +358,8 @@ button img {
 
     #NPCDead {
         height: 400px;
-        gap: 32px;
-        margin: 32px;
+        gap: 24px;
+        margin: 24px;
     }
 
     .headlinestyle {
@@ -367,7 +367,7 @@ button img {
     }
 
     #NPCDead span {
-        font-size: 32px;
+        font-size: 40px;
     }
 
     #mobileBtns {
