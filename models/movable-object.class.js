@@ -44,7 +44,7 @@ class MovableObject extends drawableObject {
         if (this instanceof ThrowableObject) {
             return true;
         } else {
-            return this.y < 200;
+            return this.y < 210;
         }
     }
 
@@ -111,7 +111,7 @@ class MovableObject extends drawableObject {
         );
     }
 
-    
+
     /**
      * Function for setting energy after movable object (x) is hit. 
      * @param {*} x
