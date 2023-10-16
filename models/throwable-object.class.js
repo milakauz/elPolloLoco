@@ -57,6 +57,6 @@ class ThrowableObject extends MovableObject {
             } else if (this.isSplashed) {
                 this.playAnimation(this.IMAGES_SPLASHING)
             }
-        }, 450);
+        }, 1000 / 150);
     }
 }
