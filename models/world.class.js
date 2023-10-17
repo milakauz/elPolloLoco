@@ -112,6 +112,9 @@ class World {
         }
     }
 
+    /**
+     * Throwing bottle by pushing bottle into ThrowableObjects. 
+     */
     throwBottle() {
         let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100, true);
         this.throwableObjects.push(bottle);
@@ -128,7 +131,7 @@ class World {
     }
 
     /**
-     * Checking if chicklens and endboss are colliding with character. For either setting the characters energy, 
+     * Checking if chickens and endboss are colliding with character. For either setting the characters energy, 
      * removing chicken from map or hurting/removing endboss.
      */
     checkCollisions() {
@@ -140,6 +143,16 @@ class World {
         this.checkCollisionsWithEndboss();
     }
 
+    /**
+     * Checking if  character is hurt by enemy.
+     * 
+    * This function checks for a collision between the character and the enemy.
+    * If they are colliding && the character is not above the ground && and the enemy still has energy,
+    * the character will be hit and its health bar updated.
+    *
+    * @param {Object} enemy
+    */
+
     checkIfCharacterIsHurt(enemy) {
         if (this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.energy > 0) {
             this.character.hit(0.5);
@@ -147,6 +160,14 @@ class World {
         }
     }
 
+    /**
+    * Checking if enemy is hurt.
+    * 
+    * If the character is colliding with the enemy && is above the ground,
+    * the enemy will be hurt and its energy will decrease.
+    *
+    * @param {Object} enemy
+    */
     checkIfEnemyIsHurt(enemy) {
         if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
             enemy.dies();
@@ -155,12 +176,23 @@ class World {
         }
     }
 
+    /**
+    * Checking if the enemy is dead and if the enemy's energy reaches 0, it will be removed from the map.
+    *
+    * @param {Object} enemy
+    */
     checkIfEnemyIsDead(enemy) {
         if (enemy.energy === 0) {
             this.removeEnemyfromMap(enemy);
         }
     }
 
+    /**
+    * Checking for collisions between character and endboss.
+    * 
+    * If the character collides with endboss && endboss still has energy,
+    * character will be hit with double damage and its healthbar updated.
+    */
     checkCollisionsWithEndboss() {
         if (this.character.isColliding(this.level.endboss[0]) && this.level.endboss[0].energy > 0) {
             this.character.hit(2);
@@ -194,7 +226,7 @@ class World {
     }
 
     /**
-     * Checkking collisions between endboss and bottles for animation and sound of endboss and bottles.
+     * Checking collisions between endboss and bottles for animation and sound of endboss and bottles.
      */
     checkBottleEnemyCollisions() {
         this.throwableObjects.forEach((bottle) => {
