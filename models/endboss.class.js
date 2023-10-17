@@ -13,6 +13,8 @@ class Endboss extends MovableObject {
         bottom: 15,
         left: 100
     }
+    movingEndboss;
+    endbossInterval;
     IMAGES_ATTACKING = [
         'img/4_enemie_boss_chicken/3_attack/G13.png',
         'img/4_enemie_boss_chicken/3_attack/G14.png',
@@ -67,33 +69,83 @@ class Endboss extends MovableObject {
      * Animation function setting intervals for endboss according to conditions like hurt.
      */
     animate() {
-        let movingEndboss = setInterval(() => {
-            if (this.hadFirstContact) {
-                this.moveLeft()
-            }
+        this.movingEndboss = setInterval(() => {
+            this.startMoving();
         }, 1000 / 100);
 
-        let endbossInterval = setInterval(() => {
-            if (this.hadFirstContact && !this.hadFirstContactOver) {
-                this.playAnimation(this.IMAGES_ATTACKING);
-                setTimeout(() => {
-                    this.hadFirstContactOver = true;
-                }, 2000);
-            } else if (!this.isHurt() && !this.isDying) {
-                this.playAnimation(this.IMAGES_WALKING)
-            } else if (this.isHurt() && !this.isDying) {
-                setTimeout(() => {
-                    this.playAnimation(this.IMAGES_HURTING);
-                }, 100);
-            } else if (this.isDying) {
-                clearInterval(movingEndboss);
-                this.playAnimation(this.IMAGES_DYING);
-                this.y += 25;
-            } else if (!this.isHurt() && this.isDying) {
-                setTimeout(() => {
-                    clearInxterval(endbossInterval);
-                }, 3000);
-            }
+        this.endbossInterval = setInterval(() => {
+            this.playAttackingImages();
+            this.playWalkingImages();
+            this.playHurtingImages();
+            this.playDyingImages();
+            this.checkIfEndbossIsDying();
         }, 200);
+    }
+
+    
+    /**
+     * Checking if endboss had first contact with character. If true: starting to move towards character.
+     */
+    startMoving() {
+        if (this.hadFirstContact) {
+            this.moveLeft()
+        }
+    }
+
+    
+    /**
+     * Checking if hadFirstContact is true and not over for playing attacking images.
+     */
+    playAttackingImages(){
+        if (this.hadFirstContact && !this.hadFirstContactOver) {
+            console.log('attacke!')
+            this.playAnimation(this.IMAGES_ATTACKING);
+            setTimeout(() => {
+                this.hadFirstContactOver = true;
+            }, 2000);
+        }
+    }
+
+    
+    /**
+     * Checking if endboss is able to walk and if true: plays walking animations. 
+     * @date 10/17/2023 - 2:48:34 PM
+     */
+    playWalkingImages(){
+        if (!this.isHurt() && !this.isDying) {
+            this.playAnimation(this.IMAGES_WALKING)
+        }
+    }
+
+    
+    /**
+     * Checking if endboss is hurt and if true: plays hurting animations.
+     */
+    playHurtingImages() {
+        if (this.isHurt() && !this.isDying) {
+            setTimeout(() => {
+                this.playAnimation(this.IMAGES_HURTING);
+            }, 100);
+        }
+    }
+
+    playDyingImages(){
+        if (this.isDying) {
+            clearInterval(this.movingEndboss);
+            this.playAnimation(this.IMAGES_DYING);
+            this.y += 25;
+        }
+    }
+
+    
+    /**
+     * Checking if endboss is dead and if true: plays dying animations.
+     */
+    checkIfEndbossIsDying(){
+        if (!this.isHurt() && this.isDying) {
+            setTimeout(() => {
+                clearInterval(this.endbossInterval);
+            }, 3000);
+        }
     }
 }
