@@ -142,7 +142,7 @@ class World {
 
     checkIfCharacterIsHurt(enemy) {
         if (this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.energy > 0) {
-            this.character.hit(1);
+            this.character.hit(0.5);
             this.healthBar.setPercentage(this.character.energy)
         }
     }
