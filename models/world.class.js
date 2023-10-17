@@ -70,7 +70,7 @@ class World {
             this.checkBottleCollisions();
             this.checkBottleEnemyCollisions();
             this.initiateSound();
-        }, 100);
+        }, 50);
     }
 
 
@@ -131,17 +131,34 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             this.checkCharacterEnergy(this.character.energy);
-            if (this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.energy > 0) {
-                this.character.hit(1);
-                this.healthBar.setPercentage(this.character.energy)
-            } else if (this.character.isColliding(enemy)) {
-                enemy.dies();
-                enemy.energy--;
-                if (enemy.energy === 0) {
-                    this.removeEnemyfromMap(enemy);
-                }
-            }
+            this.checkIfCharacterIsHurt(enemy);
+            this.checkIfEnemyIsHurt(enemy);
         });
+        this.checkCollisionsWithEndboss();
+    }
+
+    checkIfCharacterIsHurt(enemy) {
+        if (this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.energy > 0) {
+            this.character.hit(1);
+            this.healthBar.setPercentage(this.character.energy)
+        }
+    }
+
+    checkIfEnemyIsHurt(enemy) {
+        if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+            enemy.dies();
+            enemy.energy--;
+            this.checkIfEnemyIsDead(enemy)
+        }
+    }
+
+    checkIfEnemyIsDead(enemy) {
+        if (enemy.energy === 0) {
+            this.removeEnemyfromMap(enemy);
+        }
+    }
+
+    checkCollisionsWithEndboss() {
         if (this.character.isColliding(this.level.endboss[0]) && this.level.endboss[0].energy > 0) {
             this.character.hit(2);
             this.healthBar.setPercentage(this.character.energy);

@@ -44,18 +44,18 @@
                 <h1 class="headlinestyle letterstyling">¡¡Genial!!</h1>
                 <span class="letterstyling">With your help, Pepe Peligroso got his farm back! <br>
                 </span>
-                <button id="nextLevelBtn" onclick="startGame(), cleanseCanvas()">
+                <button id="nextLevelBtn" onclick="reloadGame(), cleanseCanvas()">
                     ¡play again!
                 </button>
             </div>
             <div id="PCDead" class="d-none">
-                <button id="endBtn" onclick="startGame(); cleanseCanvas()">
+                <button id="endBtn" onclick="reloadGame(); cleanseCanvas()">
                     ¡ try again !
                 </button>
             </div>
         </div>
         <div id="gameIcons">
-            <button onclick="cleanseCanvas(); startGame()" id="startAgainBtn" class="tooltip d-none">
+            <button onclick="cleanseCanvas(); reloadGame()" id="startAgainBtn" class="tooltip d-none">
                 <span class="tooltiptext">¡play again!</span>
                 <img src="img/10_game_icons/startGame.png" alt="play & startGame">
             </button>

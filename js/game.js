@@ -157,3 +157,10 @@ function cleanseCanvas() {
     document.getElementById('PCDead').classList.add('d-none');
     document.getElementById('endBtn').classList.add('d-none');
 }
+
+/**
+ * Reloading game for it to be played again.
+ */
+function reloadGame() {
+    location.reload();
+}

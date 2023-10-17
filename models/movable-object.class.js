@@ -110,8 +110,7 @@ class MovableObject extends drawableObject {
             obj.y + obj.height - obj.offSet.bottom
         );
     }
-
-
+    
     /**
      * Function for setting energy after movable object (x) is hit. 
      * @param {*} x
