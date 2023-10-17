@@ -19,10 +19,6 @@ class Keyboard {
                 keyboard.RIGHT = true;
             }
         
-            if ((e.keyCode == 40)) {
-                keyboard.DOWN = true;
-            }
-        
             if ((e.keyCode == 37)) {
                 keyboard.LEFT = true;
             }
@@ -44,10 +40,6 @@ class Keyboard {
                 keyboard.RIGHT = false;
             }
         
-            if ((e.keyCode == 40)) {
-                keyboard.DOWN = false;
-            }
-        
             if ((e.keyCode == 37)) {
                 keyboard.LEFT = false;
             }
@@ -64,6 +56,13 @@ class Keyboard {
     }
 
     bindBtnsPressEvents() {
+        this.checkBtnLeft();
+        this.checkBtnRight();
+        this.checkBtnJump();
+        this.checkBtnThrow();
+    }
+
+    checkBtnLeft(){
         document.getElementById('mobileLeft').addEventListener('touchstart', (e) => {
             e.preventDefault();
             this.LEFT = true;
@@ -73,7 +72,9 @@ class Keyboard {
             e.preventDefault();
             this.LEFT = false;
         });
+    }
 
+    checkBtnRight(){
         document.getElementById('mobileRight').addEventListener('touchstart', (e) => {
             e.preventDefault();
             this.RIGHT = true;
@@ -83,7 +84,9 @@ class Keyboard {
             e.preventDefault();
             this.RIGHT = false;
         });
+    }
 
+    checkBtnJump(){
         document.getElementById('mobileJump').addEventListener('touchstart', (e) => {
             e.preventDefault();
             this.SPACE = true;
@@ -93,7 +96,9 @@ class Keyboard {
             e.preventDefault();
             this.SPACE = false;
         });
+    }
 
+    checkBtnThrow(){
         document.getElementById('mobileThrow').addEventListener('touchstart', (e) => {
             e.preventDefault();
             this.D = true;
@@ -103,7 +108,5 @@ class Keyboard {
             e.preventDefault();
             this.D = false;
         });
-
-
     }
 }
