@@ -65,12 +65,15 @@ class World {
         this.checkAllCollisions = setInterval(() => {
             this.checkCollisions();
             this.checkFirstContact();
-            this.checkThrowObjects();
             this.checkCoinCollisions();
             this.checkBottleCollisions();
             this.checkBottleEnemyCollisions();
             this.initiateSound();
         }, 50);
+
+        setInterval(() => {
+            this.checkThrowObjects();
+        }, 100);
     }
 
 
