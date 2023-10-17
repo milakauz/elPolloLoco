@@ -89,7 +89,6 @@ class Character extends MovableObject {
         setTimeout(() => {
             this.y = 210;
         }, 900);
-        console.log(this.y);
     }
 
 
@@ -192,23 +191,46 @@ class Character extends MovableObject {
      */
     setMovingInterval() {
         setInterval(() => {
-            if (this.canMoveRight()) {
-                this.resetLastAction();
-                this.moveRight();
-            }
-            if (this.canMoveLeft()) {
-                this.resetLastAction();
-                this.moveLeft();
-            }
-
-            if (this.canJump()) {
-                this.resetLastAction();
-                this.jump();
-                this.playSound(character_jumping)
-            }
-
+            this.isMovingRight();
+            this.isMovingLeft();
+            this.isJumping();
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
+    }
+
+    
+    /**
+     * Checking if character can move right and if true will move right.
+     * @method
+     */
+    isMovingRight(){
+        if (this.canMoveRight()) {
+            this.resetLastAction();
+            this.moveRight();
+        }
+    }
+
+        /**
+     * Checking if character can move left and if true it will move left.
+     * @method
+     */
+    isMovingLeft(){
+        if (this.canMoveLeft()) {
+            this.resetLastAction();
+            this.moveLeft();
+        }
+    }
+
+        /**
+     * Checking if character can jumpp. If true it will jump.
+     * @method
+     */
+    isJumping(){
+        if (this.canJump()) {
+            this.resetLastAction();
+            this.jump();
+            this.playSound(character_jumping)
+        }
     }
 
     /**
@@ -216,21 +238,13 @@ class Character extends MovableObject {
      */
     setLivingInterval() {
         setInterval(() => {
-            if (this.isHurt()) {
-                setTimeout(() => {
-                    this.playAnimation(this.IMAGES_HURTING);
-                }, 100);
-            } else if (this.isWalking()) {
-                this.playAnimation(this.IMAGES_WALKING);
-            } else if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DYING);
-            }
+            this.playHurtingImages();
+            this.playWalkingImages();
+            this.playDyingImages();
         }, 50);
 
         setInterval(() => {
-            if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_JUMPING)
-            }
+            this.playJumpingImages();
         }, 250);
     }
 
@@ -244,6 +258,51 @@ class Character extends MovableObject {
             if (this.hasNoActions() && this.lastAction >= 3000)
                 this.isSleeping();
         }, 200);
+    }
+
+    /**
+    * Plays the hurting animation if the character is hurt.
+    * @method
+     */
+    playHurtingImages() {
+        if (this.isHurt()) {
+            setTimeout(() => {
+                this.playAnimation(this.IMAGES_HURTING);
+            }, 100);
+        }
+    }
+
+    
+    /**
+     * Plays the walking animation if the congruent key is pressed.
+     * @method
+     */
+    playWalkingImages() {
+        if (this.isWalking()) {
+            this.playAnimation(this.IMAGES_WALKING);
+        }
+    }
+
+    
+    /**
+     * Plays the dying animations if the character is dead.
+     * @method
+     */
+    playDyingImages() {
+        if (this.isDead()) {
+            this.playAnimation(this.IMAGES_DYING);
+        }
+    }
+
+    
+    /**
+     * Plays the jumping animation if the congruent key is pressed.
+     * @method
+     */
+    playJumpingImages() {
+        if (this.isAboveGround()) {
+            this.playAnimation(this.IMAGES_JUMPING)
+        }
     }
 
     /**
