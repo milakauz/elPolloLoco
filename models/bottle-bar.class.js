@@ -17,6 +17,10 @@ class BottleBar extends StatusBar {
         this.y = 150;
     }
 
+    
+    /**
+     * Updating bar if chracter collects new bottles.
+     */
     updateBar() {
         let imagePath = this.IMAGES[this.resolveImageIndexCollectables(this.collectedBottles)];
         this.img = this.imageCache[imagePath];

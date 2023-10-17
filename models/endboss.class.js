@@ -129,6 +129,9 @@ class Endboss extends MovableObject {
         }
     }
 
+    /**
+     * Checking if endboss is dying and if true: plays dying animations.
+     */
     playDyingImages(){
         if (this.isDying) {
             clearInterval(this.movingEndboss);
@@ -139,7 +142,7 @@ class Endboss extends MovableObject {
 
     
     /**
-     * Checking if endboss is dead and if true: plays dying animations.
+     * Checking if endboss is dead and if true: deleting animation intervals of endboss.
      */
     checkIfEndbossIsDying(){
         if (!this.isHurt() && this.isDying) {
