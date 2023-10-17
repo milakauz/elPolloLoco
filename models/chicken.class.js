@@ -4,9 +4,9 @@ class Chicken extends MovableObject {
     width = 80;
     offSet = {
         top: 5,
-        right: 5,
+        right: 35,
         bottom: 0,
-        left: 5
+        left: 35
     }
     energy = 1;
     isDead = false;
