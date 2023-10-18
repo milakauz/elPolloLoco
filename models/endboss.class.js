@@ -98,7 +98,6 @@ class Endboss extends MovableObject {
      */
     playAttackingImages(){
         if (this.hadFirstContact && !this.hadFirstContactOver) {
-            console.log('attacke!')
             this.playAnimation(this.IMAGES_ATTACKING);
             setTimeout(() => {
                 this.hadFirstContactOver = true;
