@@ -73,7 +73,7 @@ class World {
 
         setInterval(() => {
             this.checkThrowObjects();
-        }, 100);
+        }, 250);
     }
 
 
