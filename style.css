@@ -505,7 +505,7 @@ button img {
 
 @media screen and (min-width: 1000px) {
     body {
-        background-size: unset;
+        /* background-size: unset; */
         height: 100vh;
     }
 }
